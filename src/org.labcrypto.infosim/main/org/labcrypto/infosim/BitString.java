@@ -4,8 +4,10 @@ public interface BitString {
 
 	int size();
 
-	Bit read(int index);
+	Bit get(int index);
 
 	void set(int index, Bit bit);
+
+	void add(Bit bit);
 
 }
