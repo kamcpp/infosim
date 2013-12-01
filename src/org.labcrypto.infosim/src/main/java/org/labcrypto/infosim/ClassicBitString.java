@@ -3,6 +3,8 @@ package org.labcrypto.infosim;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.labcrypto.infosim.classic.ClassicBit;
+
 public class ClassicBitString implements BitString {
 
 	private List<ClassicBit> classicBits;
