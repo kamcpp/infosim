@@ -5,61 +5,27 @@ package org.labcrypto.infosim.math;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Nov 30, 2013
- * 
- *       Represents a real number.
+ * @date Dec 6, 2013
  * 
  */
-public class RealNumber {
+public interface RealNumber {
 
-  public static RealNumber one () {
-    // TODO
-    return null;
-  }
+  RealNumber one ();
 
-  public static RealNumber zero () {
-    // TODO
-    return null;
-  }
+  RealNumber zero ();
 
-  public RealNumber () {
-    // TODO
-  }
+  double asDouble();
+  
+  RealNumber minus ();
 
-  public RealNumber (double number) {
-    // TODO
-  }
+  RealNumber inverse ();
 
-  public RealNumber (int numrator, int denominator) {
-    // TODO
-  }
+  RealNumber add (RealNumber r);
 
-  public RealNumber (RealNumber realNumber) {
-    // TODO
-  }
+  RealNumber substract (RealNumber r);
 
-  public double asDouble () {
-    // TODO
-    return 0.0;
-  }
+  RealNumber multiply (RealNumber r);
 
-  public RealNumber minus () {
-    // TODO
-    return null;
-  }
+  RealNumber divide (RealNumber r);
 
-  public RealNumber inverse (RealNumber r1) {
-    // TODO
-    return null;
-  }
-
-  public RealNumber add (RealNumber r1, RealNumber r2) {
-    // TODO
-    return null;
-  }
-
-  public RealNumber multiply (RealNumber r1, RealNumber r2) {
-    // TODO
-    return null;
-  }
 }

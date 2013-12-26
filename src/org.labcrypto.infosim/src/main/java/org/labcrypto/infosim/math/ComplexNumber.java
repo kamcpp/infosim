@@ -18,51 +18,58 @@ public class ComplexNumber {
    * Returns zero element of complex numbers.
    */
   public static ComplexNumber zero () {
-    return new ComplexNumber (RealNumber.zero (), RealNumber.zero ());
+    return new ComplexNumber (new RealNumber().zero (), new RealNumber().zero ());
   }
 
   /**
    * Returns one element of complex numbers.
    */
   public static ComplexNumber one () {
-    return new ComplexNumber (RealNumber.one (), RealNumber.zero ());
+    return new ComplexNumber (new RealNumber.one (), RealNumber.zero ());
   }
 
   /**
    * Real part of the complex number.
    */
-  private RealNumber real;
+  private DoubleRealNumber real;
   /**
    * Imaginary part of the complex number.
    */
-  private RealNumber imaginary;
+  private DoubleRealNumber imaginary;
 
+  /**
+   * Ctor for converting a double number to its complex counterpart.
+   * 
+   * @param number
+   *          Double number which should be converted to its complex
+   *          counterpart.
+   */
   public ComplexNumber (double number) {
-    real = new RealNumber (number);
-    imaginary = RealNumber.zero ();
+    real = new DoubleRealNumber (number);
+    imaginary = DoubleRealNumber.zero ();
   }
 
-  public ComplexNumber (RealNumber realPart) {
-    real = new RealNumber (realPart);
-    imaginary = RealNumber.zero ();
+  public ComplexNumber (DoubleRealNumber realPart) {
+    real = new DoubleRealNumber (realPart);
+    imaginary = DoubleRealNumber.zero ();
   }
 
-  public ComplexNumber (RealNumber realPart, RealNumber imaginaryPart) {
-    real = new RealNumber (realPart);
-    imaginary = new RealNumber (imaginaryPart);
+  public ComplexNumber (DoubleRealNumber realPart, DoubleRealNumber imaginaryPart) {
+    real = new DoubleRealNumber (realPart);
+    imaginary = new DoubleRealNumber (imaginaryPart);
   }
 
   public ComplexNumber (ComplexNumber complexNumber) {
-    real = new RealNumber (complexNumber.real ());
-    imaginary = new RealNumber (complexNumber.imaginary ());
+    real = new DoubleRealNumber (complexNumber.real ());
+    imaginary = new DoubleRealNumber (complexNumber.imaginary ());
   }
 
-  public RealNumber real () {
-    return new RealNumber (real);
+  public DoubleRealNumber real () {
+    return new DoubleRealNumber (real);
   }
 
-  public RealNumber imaginary () {
-    return new RealNumber (imaginary);
+  public DoubleRealNumber imaginary () {
+    return new DoubleRealNumber (imaginary);
   }
 
   public ComplexNumber conjugate () {
