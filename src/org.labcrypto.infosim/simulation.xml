@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<simulations>
+	<simulation name="bb84">
+
+		<entity name="alice" class="..." />
+		<entity name="bob" class="..." />
+		<entity name="eve" class="..." />
+
+		<channel name="classic" class="..." />
+		<channel name="quantum" class="..." />
+
+		<map-channel name="classic" entity="alice" access="read,write" />
+		<map-channel name="classic" entity="bob" access="read,write" />
+		<map-channel name="classic" entity="eve" access="read,write" />
+		<map-channel name="quantum" entity="alice" access="read,write" />
+		<map-channel name="quantum" entity="bob" access="read,write" />
+		<map-channel name="quantum" entity="eve" access="read,write" />
+
+	</simulation>
+</simulations>
