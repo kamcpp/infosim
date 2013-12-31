@@ -7,15 +7,33 @@
 		<entity name="bob" class="..." />
 		<entity name="eve" class="..." />
 
-		<channel name="classic" class="..." />
-		<channel name="quantum" class="..." />
+		<channel name="classic1" class="...">
+			<media name="cable1" class="..." />
+		</channel>
 
-		<map-channel name="classic" entity="alice" access="read,write" />
-		<map-channel name="classic" entity="bob" access="read,write" />
-		<map-channel name="classic" entity="eve" access="read,write" />
-		<map-channel name="quantum" entity="alice" access="read,write" />
-		<map-channel name="quantum" entity="bob" access="read,write" />
-		<map-channel name="quantum" entity="eve" access="read,write" />
+		<channel name="quantum1" class="...">
+			<media name="fiber1" class="..." />
+		</channel>
+
+		<modulator name="mod1" class="..." />
+		<demodulator name="demod1" class="..." />
+
+		<modulator name="mod2" class="..." />
+		<demodulator name="demod2" class="..." />
+
+    <assign-channel
+		<channel-access name="classic" entity="alice" read="true"
+			write="true" />
+		<channel-access name="classic" entity="bob" read="true"
+			write="true" />
+		<channel-access name="classic" entity="eve" read="true"
+			write="true" />
+		<channel-access name="quantum" entity="alice" read="true"
+			write="true" />
+		<channel-access name="quantum" entity="bob" read="true"
+			write="true" />
+		<channel-access name="quantum" entity="eve" read="true"
+			write="true" />
 
 	</simulation>
 </simulations>
