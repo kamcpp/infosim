@@ -21,19 +21,19 @@
 		<modulator name="mod2" class="..." />
 		<demodulator name="demod2" class="..." />
 
-    <assign-channel
-		<channel-access name="classic" entity="alice" read="true"
-			write="true" />
-		<channel-access name="classic" entity="bob" read="true"
-			write="true" />
-		<channel-access name="classic" entity="eve" read="true"
-			write="true" />
-		<channel-access name="quantum" entity="alice" read="true"
-			write="true" />
-		<channel-access name="quantum" entity="bob" read="true"
-			write="true" />
-		<channel-access name="quantum" entity="eve" read="true"
-			write="true" />
+		<assign-channel entity="alice" channel="classic1"
+			modulator="mod1" demodulator="demod1" read="true" write="true" />
+		<assign-channel entity="bob" channel="classic1"
+			modulator="mod1" demodulator="demod1" read="true" write="true" />
+		<assign-channel entity="eve" channel="classic1"
+			modulator="mod1" demodulator="demod1" read="true" write="true" />
+
+		<assign-channel entity="alice" channel="quantum1"
+			modulator="mod1" demodulator="demod1" read="true" write="true" />
+		<assign-channel entity="bob" channel="quantum1"
+			modulator="mod1" demodulator="demod1" read="true" write="true" />
+		<assign-channel entity="eve" channel="quantum1"
+			modulator="mod1" demodulator="demod1" read="true" write="true" />
 
 	</simulation>
 </simulations>
