@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.labcrypto.infosim;
+package org.labcrypto.infosim.simulation;
 
 
 /**
@@ -9,6 +9,6 @@ package org.labcrypto.infosim;
  * @date   Dec 31, 2013
  * 
  */
-public interface ModulatorOutput {
+public interface ModulatorInput {
 
 }

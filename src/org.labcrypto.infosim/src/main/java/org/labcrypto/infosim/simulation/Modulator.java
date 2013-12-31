@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.labcrypto.infosim;
+package org.labcrypto.infosim.simulation;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
@@ -11,4 +11,5 @@ package org.labcrypto.infosim;
 public interface Modulator {
 
   ModulatorOutput modulate (ModulatorInput modulatorInput);
+
 }
