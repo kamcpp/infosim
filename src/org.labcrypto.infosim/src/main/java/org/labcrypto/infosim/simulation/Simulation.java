@@ -8,6 +8,14 @@ package org.labcrypto.infosim.simulation;
  * @date Dec 26, 2013
  * 
  */
-public class Simulation {
+public interface Simulation {
+
+  void addEntity (Entity entity);
+
+  EntityCollection getEntities ();
+
+  EntityCollection getJoints ();
+
+  EntityCollection getChannels ();
 
 }

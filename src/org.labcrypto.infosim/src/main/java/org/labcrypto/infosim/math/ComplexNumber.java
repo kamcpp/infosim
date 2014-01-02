@@ -18,14 +18,17 @@ public class ComplexNumber {
    * Returns zero element of complex numbers.
    */
   public static ComplexNumber zero () {
-    return new ComplexNumber (new RealNumber().zero (), new RealNumber().zero ());
+    // return new ComplexNumber (new RealNumber().zero (), new RealNumber().zero
+    // ());
+    return null;
   }
 
   /**
    * Returns one element of complex numbers.
    */
   public static ComplexNumber one () {
-    return new ComplexNumber (new RealNumber.one (), RealNumber.zero ());
+    // return new ComplexNumber (new RealNumber.one (), RealNumber.zero ());
+    return null;
   }
 
   /**
@@ -46,15 +49,16 @@ public class ComplexNumber {
    */
   public ComplexNumber (double number) {
     real = new DoubleRealNumber (number);
-    imaginary = DoubleRealNumber.zero ();
+    // imaginary = DoubleRealNumber.zero ();
   }
 
   public ComplexNumber (DoubleRealNumber realPart) {
     real = new DoubleRealNumber (realPart);
-    imaginary = DoubleRealNumber.zero ();
+    // imaginary = DoubleRealNumber.zero ();
   }
 
-  public ComplexNumber (DoubleRealNumber realPart, DoubleRealNumber imaginaryPart) {
+  public ComplexNumber (DoubleRealNumber realPart,
+      DoubleRealNumber imaginaryPart) {
     real = new DoubleRealNumber (realPart);
     imaginary = new DoubleRealNumber (imaginaryPart);
   }
