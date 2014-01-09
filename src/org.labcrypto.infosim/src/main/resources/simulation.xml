@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<simulations>
+	<simulation name="bb84">
+
+		<entity name="alice" class="..." />
+		<entity name="bob" class="..." />
+		<entity name="eve" class="..." />
+
+		<channel name="classic_channel" class="...">
+			<media name="classic_channel_cable" class="..." />
+		</channel>
+
+		<channel name="quantum_channel" class="...">
+			<media name="quantum_channel_fiber" class="..." />
+		</channel>
+
+		<joint name="alice_joint_classic" class="...">
+			<entity ref="alice" />
+			<channel ref="classic_channel" />
+			<modulator name="alice_joine_classic_mod" class="..." />
+			<demodulator name="alice_joine_classic_demod" class="..." />
+		</joint>
+
+		<joint name="alice_joint_quantum" class="...">
+			<entity ref="alice" />
+			<channel ref="quantum_channel" />
+			<modulator name="alice_joint_quantum_mod" class="..." />
+			<demodulator name="alice_joint_quantum_demod" class="..." />
+		</joint>
+
+		<joint name="bob_joint_classic" class="...">
+			<entity ref="bob" />
+			<channel ref="classic_channel" />
+			<modulator name="bob_joine_classic_mod" class="..." />
+			<demodulator name="bob_joine_classic_demod" class="..." />
+		</joint>
+
+		<joint name="bob_joint_quantum" class="...">
+			<entity ref="bob" />
+			<channel ref="quantum_channel" />
+			<modulator name="bob_joint_quantum_mod" class="..." />
+			<demodulator name="bob_joint_quantum_demod" class="..." />
+		</joint>
+
+		<joint name="eve_joint_classic" class="...">
+			<entity ref="eve" />
+			<channel ref="classic_channel" />
+			<modulator name="eve_joine_classic_mod" class="..." />
+			<demodulator name="eve_joine_classic_demod" class="..." />
+		</joint>
+
+		<joint name="bob_joint_quantum" class="...">
+			<entity ref="eve" />
+			<channel ref="quantum_channel" />
+			<modulator name="eve_joint_quantum_mod" class="..." />
+			<demodulator name="eve_joint_quantum_demod" class="..." />
+		</joint>
+
+	</simulation>
+</simulations>

@@ -16,14 +16,15 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.labcrypto.infosim.physics;
-
+package org.labcrypto.infosim.math;
 
 /**
- * @author Kamran Amini  <kam.cpp@gmail.com>
- * @date   Jan 2, 2014
+ * @author Kamran Amini <kam.cpp@gmail.com>
+ * @date Dec 6, 2013
  * 
  */
-public class WaveGenerator {
+public class RealNumberImplementationNotSupported extends RuntimeException {
+
+  private static final long serialVersionUID = -987659320559870639L;
 
 }

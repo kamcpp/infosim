@@ -16,14 +16,18 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.labcrypto.infosim.physics;
-
+package org.labcrypto.infosim.math;
 
 /**
- * @author Kamran Amini  <kam.cpp@gmail.com>
- * @date   Jan 2, 2014
+ * @author Kamran Amini <kam.cpp@gmail.com>
+ * @date Jan 10, 2014
  * 
  */
-public class WaveGenerator {
+public interface Dimension {
 
+  RealNumber minimum ();
+
+  RealNumber maximum ();
+
+  String label ();
 }

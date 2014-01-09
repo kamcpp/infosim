@@ -16,14 +16,17 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.labcrypto.infosim.physics;
+package org.labcrypto.infosim.math;
 
 
 /**
  * @author Kamran Amini  <kam.cpp@gmail.com>
- * @date   Jan 2, 2014
+ * @date   Jan 9, 2014
  * 
  */
-public class WaveGenerator {
+public class CoordinateSystem {
 
+  public int numberOfDimensions;
+  
+  
 }

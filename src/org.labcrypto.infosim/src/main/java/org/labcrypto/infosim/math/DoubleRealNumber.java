@@ -1,6 +1,21 @@
-/**
+/*
+ * InfoSim, A Java Framework for Simulating Information Theory Concepts
+ * Copyright (C) 2013 Kamran Amini
  * 
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, either version 3 of the License, or (at your option) any later
+ * version.
+ * 
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.labcrypto.infosim.math;
 
 /**
@@ -12,6 +27,9 @@ package org.labcrypto.infosim.math;
  * 
  */
 public class DoubleRealNumber implements RealNumber {
+
+  public static DoubleRealNumber ZERO = new DoubleRealNumber (0.0);
+  public static DoubleRealNumber ONE = new DoubleRealNumber (1.0);
 
   private double value;
 
@@ -33,12 +51,12 @@ public class DoubleRealNumber implements RealNumber {
 
   @Override
   public DoubleRealNumber one () {
-    return new DoubleRealNumber (1.0);
+    return DoubleRealNumber.ONE;
   }
 
   @Override
   public DoubleRealNumber zero () {
-    return new DoubleRealNumber (0.0);
+    return DoubleRealNumber.ZERO;
   }
 
   @Override
@@ -61,7 +79,7 @@ public class DoubleRealNumber implements RealNumber {
     if (r instanceof DoubleRealNumber) {
       return new DoubleRealNumber (value + r.asDouble ());
     }
-    throw new RealNumberNotSupported ();
+    throw new RealNumberImplementationNotSupported ();
   }
 
   @Override
@@ -69,7 +87,7 @@ public class DoubleRealNumber implements RealNumber {
     if (r instanceof DoubleRealNumber) {
       return new DoubleRealNumber (value - r.asDouble ());
     }
-    throw new RealNumberNotSupported ();
+    throw new RealNumberImplementationNotSupported ();
   }
 
   @Override
@@ -77,7 +95,7 @@ public class DoubleRealNumber implements RealNumber {
     if (r instanceof DoubleRealNumber) {
       return new DoubleRealNumber (value * r.asDouble ());
     }
-    throw new RealNumberNotSupported ();
+    throw new RealNumberImplementationNotSupported ();
   }
 
   @Override
@@ -85,6 +103,6 @@ public class DoubleRealNumber implements RealNumber {
     if (r instanceof DoubleRealNumber) {
       return new DoubleRealNumber (value / r.asDouble ());
     }
-    throw new RealNumberNotSupported ();
+    throw new RealNumberImplementationNotSupported ();
   }
 }

@@ -16,14 +16,43 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package org.labcrypto.infosim.physics;
-
+package org.labcrypto.infosim.math;
 
 /**
- * @author Kamran Amini  <kam.cpp@gmail.com>
- * @date   Jan 2, 2014
+ * @author Kamran Amini <kam.cpp@gmail.com>
+ * @date Jan 9, 2014
  * 
  */
-public class WaveGenerator {
+public class ContinuousDimension implements Dimension {
 
+  private RealNumber minimum;
+  private RealNumber maximum;
+  private String label;
+
+  @Override
+  public RealNumber minimum () {
+    return minimum;
+  }
+
+  public void setMinimum (RealNumber minimum) {
+    this.minimum = minimum;
+  }
+
+  @Override
+  public RealNumber maximum () {
+    return maximum;
+  }
+
+  public void setMaximum (RealNumber maximum) {
+    this.maximum = maximum;
+  }
+
+  @Override
+  public String label () {
+    return label;
+  }
+
+  public void setLabel (String label) {
+    this.label = label;
+  }
 }
