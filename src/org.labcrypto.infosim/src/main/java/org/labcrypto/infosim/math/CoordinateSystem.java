@@ -18,15 +18,15 @@
 
 package org.labcrypto.infosim.math;
 
-
 /**
- * @author Kamran Amini  <kam.cpp@gmail.com>
- * @date   Jan 9, 2014
+ * @author Kamran Amini <kam.cpp@gmail.com>
+ * @date Jan 9, 2014
  * 
  */
-public class CoordinateSystem {
+public interface CoordinateSystem {
 
-  public int numberOfDimensions;
-  
-  
+  int getNumberOfDimensions ();
+
+  Dimension getDimension (int index);
+
 }

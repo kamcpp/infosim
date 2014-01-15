@@ -25,13 +25,17 @@ package org.labcrypto.infosim.math;
  */
 public class DiscreetDimension extends ContinuousDimension {
 
-  private RealNumber step;
+  private RealNumber stepLength;
 
-  public RealNumber getStep () {
-    return step;
+  public RealNumber getStepLength () {
+    return stepLength;
   }
 
-  public void setStep (RealNumber step) {
-    this.step = step;
+  public void setStepLength (RealNumber stepLength) {
+    this.stepLength = stepLength;
+  }
+
+  public int numberOfSteps () {
+    return (int) Math.floor (maximum ().substract (minimum ()).asDouble ()) + 1;
   }
 }

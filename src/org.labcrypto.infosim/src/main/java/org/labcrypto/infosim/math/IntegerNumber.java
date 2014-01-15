@@ -18,12 +18,45 @@
 
 package org.labcrypto.infosim.math;
 
-
 /**
- * @author Kamran Amini  <kam.cpp@gmail.com>
- * @date   Nov 30, 2013
+ * @author Kamran Amini <kam.cpp@gmail.com>
+ * @date Jan 10, 2014
  * 
  */
-public class Matrix<T > {
+public interface IntegerNumber {
+
+  IntegerNumber zero ();
+
+  IntegerNumber one ();
+
+  int asInt ();
+
+  double asDouble ();
+
+  IntegerNumber minus ();
+
+  RealNumber inverse ();
+
+  IntegerNumber add (IntegerNumber n);
+
+  IntegerNumber substract (IntegerNumber n);
+
+  IntegerNumber multiply (IntegerNumber n);
+
+  RealNumber divide (IntegerNumber n);
+
+  boolean isNegative ();
+
+  boolean isPositive ();
+
+  boolean isNonNegative ();
+
+  boolean isInfinity ();
+
+  boolean isPositiveInfinity ();
+
+  boolean isNegativeInfinity ();
+
+  boolean isZero ();
 
 }

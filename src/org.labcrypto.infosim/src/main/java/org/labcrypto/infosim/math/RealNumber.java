@@ -18,16 +18,21 @@
 
 package org.labcrypto.infosim.math;
 
+import org.labcrypto.infosim.Clonnable;
+
+
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Dec 6, 2013
  * 
  */
-public interface RealNumber {
+public interface RealNumber extends Clonnable < RealNumber > {
 
   RealNumber zero ();
 
   RealNumber one ();
+
+  int asInt ();
 
   double asDouble ();
 
@@ -42,5 +47,21 @@ public interface RealNumber {
   RealNumber multiply (RealNumber r);
 
   RealNumber divide (RealNumber r);
+
+  boolean isNegative ();
+
+  boolean isPositive ();
+
+  boolean isNonNegative ();
+
+  void setInfinity (InfinityType infinityType);
+
+  boolean isInfinity ();
+
+  boolean isPositiveInfinity ();
+
+  boolean isNegativeInfinity ();
+
+  boolean isZero ();
 
 }

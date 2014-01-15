@@ -18,12 +18,13 @@
 
 package org.labcrypto.infosim.math;
 
-
 /**
- * @author Kamran Amini  <kam.cpp@gmail.com>
- * @date   Nov 30, 2013
+ * @author Kamran Amini <kam.cpp@gmail.com>
+ * @date Dec 6, 2013
  * 
  */
-public class Matrix<T > {
+public class IntegerNumberImplementationNotSupported extends RuntimeException {
+
+  private static final long serialVersionUID = -4542640372576401756L;
 
 }

@@ -55,4 +55,14 @@ public class ContinuousDimension implements Dimension {
   public void setLabel (String label) {
     this.label = label;
   }
+
+  @Override
+  public ContinuousDimension makeClone () {
+    ContinuousDimension toReturn = new ContinuousDimension ();
+    toReturn.setLabel (label);
+    toReturn.setMaximum (maximum.makeClone ());
+    toReturn.setMinimum (minimum.makeClone ());
+    return toReturn;
+
+  }
 }

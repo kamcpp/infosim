@@ -18,12 +18,15 @@
 
 package org.labcrypto.infosim.math;
 
+import org.labcrypto.infosim.Clonnable;
+
+
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Jan 10, 2014
  * 
  */
-public interface Dimension {
+public interface Dimension extends Clonnable < Dimension > {
 
   RealNumber minimum ();
 

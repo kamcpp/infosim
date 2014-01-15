@@ -15,15 +15,43 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package org.labcrypto.infosim.math;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
- * @author Kamran Amini  <kam.cpp@gmail.com>
- * @date   Nov 30, 2013
+ * @author Kamran Amini <kam.cpp@gmail.com>
+ * @date Jan 15, 2014
  * 
  */
-public class Matrix<T > {
+public class CartesianCoordinateSystem implements CoordinateSystem {
 
+  private List < Dimension > dimensions;
+
+  protected CartesianCoordinateSystem () {
+  }
+
+  public CartesianCoordinateSystem (List < Dimension > dimensions) {
+    for (Dimension d : dimensions) {
+      addDimension (d);
+    }
+  }
+
+  public int getNumberOfDimensions () {
+    return dimensions.size ();
+  }
+
+  @Override
+  public Dimension getDimension (int index) {
+    return dimensions.get (index);
+  }
+
+  protected void addDimension (Dimension dimension) {
+    if (this.dimensions == null) {
+      this.dimensions = new ArrayList < Dimension > ();
+    }
+    this.dimensions.add (dimension.makeClone ());
+  }
 }
