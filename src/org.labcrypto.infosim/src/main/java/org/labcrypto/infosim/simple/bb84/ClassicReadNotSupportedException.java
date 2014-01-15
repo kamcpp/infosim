@@ -19,9 +19,14 @@ package org.labcrypto.infosim.simple.bb84;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 15, 2014
+ * @date Jan 16, 2014
  * 
  */
-public class ClassicChannel extends Channel < ClassicBit > {
+public class ClassicReadNotSupportedException extends RuntimeException {
 
+  private static final long serialVersionUID = -3381851930701961552L;
+
+  public ClassicReadNotSupportedException () {
+    super ("Classic read is not supported on a quantum bit.");
+  }
 }

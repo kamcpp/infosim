@@ -17,6 +17,9 @@
  */
 package org.labcrypto.infosim.simple.bb84;
 
+import java.util.Random;
+
+
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Jan 15, 2014
@@ -24,8 +27,23 @@ package org.labcrypto.infosim.simple.bb84;
  */
 public class QuantumBit extends Bit {
 
+  private BasisType basis;
+
+  public QuantumBit (BasisType basis, boolean value) {
+    this.basis = basis;
+    this.value = value;
+  }
+
   @Override
   public boolean value () {
-    return value; // TODO
+    throw new ClassicReadNotSupportedException ();
+  }
+
+  public boolean value (BasisType basis) {
+    if (this.basis == basis) {
+      return value;
+    } else {
+      return new Random ().nextBoolean ();
+    }
   }
 }

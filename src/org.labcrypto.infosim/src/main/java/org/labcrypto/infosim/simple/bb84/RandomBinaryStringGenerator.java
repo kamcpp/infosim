@@ -17,11 +17,22 @@
  */
 package org.labcrypto.infosim.simple.bb84;
 
+import java.util.Random;
+
+
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 15, 2014
+ * @date Jan 16, 2014
  * 
  */
-public class ClassicChannel extends Channel < ClassicBit > {
+public class RandomBinaryStringGenerator {
 
+  public static boolean[] generate (int length) {
+    boolean[] toReturn = new boolean[length];
+    Random random = new Random ();
+    for (int i = 0; i < length; i++) {
+      toReturn[i] = random.nextBoolean ();
+    }
+    return toReturn;
+  }
 }

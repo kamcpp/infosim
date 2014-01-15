@@ -25,8 +25,33 @@ package org.labcrypto.infosim.simple.bb84;
  */
 public class AliceThread implements Runnable {
 
+  private int numberOfBits;
+  private Channel < QuantumBit > quantumChannel;
+  private Channel < ClassicBit > classicChannel;
+
+  public AliceThread (int numberOfBits, Channel < QuantumBit > quantumChannel,
+      Channel < ClassicBit > classicChannel) {
+    this.numberOfBits = numberOfBits;
+    this.quantumChannel = quantumChannel;
+    this.classicChannel = classicChannel;
+  }
+
   @Override
   public void run () {
+    boolean[] key = RandomBinaryStringGenerator.generate (numberOfBits);
+    boolean[] basis = RandomBinaryStringGenerator.generate (numberOfBits);
+
+    QuantumBit[] toSend = new QuantumBit[numberOfBits];
+    for (int i = 0; i < numberOfBits; i++) {
+      BasisType b = basis[i] ? BasisType.Diagonal : BasisType.Orthogonal;
+      toSend[i] = new QuantumBit (b, key[i]);
+    }
+
+    quantumChannel.write (toSend);
+    synchronized (quantumChannel) {
+      quantumChannel.notifyAll ();
+    }
+
     
   }
 }

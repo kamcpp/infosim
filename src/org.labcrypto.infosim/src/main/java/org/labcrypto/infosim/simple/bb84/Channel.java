@@ -17,11 +17,34 @@
  */
 package org.labcrypto.infosim.simple.bb84;
 
+import java.util.concurrent.ConcurrentLinkedQueue;
+
+
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Jan 15, 2014
  * 
  */
-public class ClassicChannel extends Channel < ClassicBit > {
+public class Channel < BitType extends Bit > {
+
+  protected ConcurrentLinkedQueue < BitType > queue;
+
+  public Channel () {
+    queue = new ConcurrentLinkedQueue < BitType > ();
+  }
+
+  public void write (BitType bit) {
+    queue.add (bit);
+  }
+
+  public void write (BitType[] bits) {
+    for (BitType bit : bits) {
+      queue.add (bit);
+    }
+  }
+
+  public BitType read () {
+    return queue.peek ();
+  }
 
 }

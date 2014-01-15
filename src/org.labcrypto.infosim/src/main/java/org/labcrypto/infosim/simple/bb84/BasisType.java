@@ -17,27 +17,12 @@
  */
 package org.labcrypto.infosim.simple.bb84;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
-
-
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 15, 2014
+ * @date Jan 16, 2014
  * 
  */
-public class AbstractChannel < BitType extends Bit > {
-
-  protected ConcurrentLinkedQueue < BitType > queue;
-
-  public AbstractChannel () {
-    queue = new ConcurrentLinkedQueue < BitType > ();
-  }
-
-  public void Write (BitType bit) {
-    queue.add (bit);
-  }
-
-  public BitType Read () {
-    return queue.peek ();
-  }
+public enum BasisType {
+  Orthogonal,
+  Diagonal
 }

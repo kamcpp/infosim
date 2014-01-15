@@ -23,6 +23,6 @@ package org.labcrypto.infosim.simple.bb84;
  * @date   Jan 15, 2014
  * 
  */
-public class QuantumChannel extends AbstractChannel < QuantumBit >{
+public class QuantumChannel extends Channel < QuantumBit >{
 
 }
