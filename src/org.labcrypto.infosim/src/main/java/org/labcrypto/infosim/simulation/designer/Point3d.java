@@ -15,18 +15,40 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.labcrypto.infosim.math;
+
+package org.labcrypto.infosim.simulation.designer;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Jan 15, 2014
  * 
  */
-public class ThreeDimensionalCartesianCoordinateSystem extends
-    CartesianCoordinateSystem {
+public class Point3d {
 
-  public ThreeDimensionalCartesianCoordinateSystem () {
-    super ();
-    // TODO
+  private int x;
+  private int y;
+  private int z;
+
+  public Point3d (int x, int y, int z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+
+  public int getX () {
+    return x;
+  }
+
+  public int getY () {
+    return y;
+  }
+
+  public int getZ () {
+    return z;
+  }
+
+  @Override
+  public String toString () {
+    return "Point3d: {x:\"" + x + "\", y:\"" + y + "\", z:\"" + z + "\"}";
   }
 }

@@ -15,18 +15,30 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.labcrypto.infosim.math;
+package org.labcrypto.infosim.simulation.designer;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Jan 15, 2014
  * 
  */
-public class ThreeDimensionalCartesianCoordinateSystem extends
-    CartesianCoordinateSystem {
+public abstract class Media {
 
-  public ThreeDimensionalCartesianCoordinateSystem () {
-    super ();
-    // TODO
+  private List < LineSegment > lineSegments;
+
+  public Media () {
+  }
+
+  public abstract MediaType getType ();
+
+  public void addLineSegment (LineSegment lineSegment) {
+    if (lineSegments == null) {
+      lineSegments = new ArrayList < LineSegment > ();
+    }
+    lineSegments.add (lineSegment);
   }
 }

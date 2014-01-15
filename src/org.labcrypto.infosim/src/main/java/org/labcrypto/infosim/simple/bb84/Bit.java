@@ -15,18 +15,22 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.labcrypto.infosim.math;
+package org.labcrypto.infosim.simple.bb84;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Jan 15, 2014
  * 
  */
-public class ThreeDimensionalCartesianCoordinateSystem extends
-    CartesianCoordinateSystem {
+public abstract class Bit {
 
-  public ThreeDimensionalCartesianCoordinateSystem () {
-    super ();
-    // TODO
+  protected boolean value;
+
+  public boolean value () {
+    return value;
+  }
+
+  public void setValue (boolean value) {
+    this.value = value;
   }
 }

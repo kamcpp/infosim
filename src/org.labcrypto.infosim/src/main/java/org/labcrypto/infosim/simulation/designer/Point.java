@@ -15,18 +15,14 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.labcrypto.infosim.math;
+package org.labcrypto.infosim.simulation.designer;
+
 
 /**
- * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 15, 2014
+ * @author Kamran Amini  <kam.cpp@gmail.com>
+ * @date   Jan 15, 2014
  * 
  */
-public class ThreeDimensionalCartesianCoordinateSystem extends
-    CartesianCoordinateSystem {
+public interface Point {
 
-  public ThreeDimensionalCartesianCoordinateSystem () {
-    super ();
-    // TODO
-  }
 }
