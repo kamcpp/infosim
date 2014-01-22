@@ -33,6 +33,10 @@ public class Channel < BitType extends Bit > {
     queue = new ConcurrentLinkedQueue < BitType > ();
   }
 
+  public boolean isEmpty () {
+    return queue.isEmpty ();
+  }
+
   public void write (BitType bit) {
     queue.add (bit);
   }

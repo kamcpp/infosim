@@ -19,26 +19,18 @@ package org.labcrypto.infosim.simple.bb84;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 15, 2014
+ * @date Jan 17, 2014
  * 
  */
-public abstract class Bit {
+public class ClassicConvertor {
 
-  protected boolean value;
-
-  public Bit () {
-    setValue (false);
-  }
-
-  public Bit (boolean value) {
-    setValue (value);
-  }
-
-  public boolean value () {
-    return value;
-  }
-
-  public void setValue (boolean value) {
-    this.value = value;
+  public static ClassicBit[] getClassicBits (int number) {
+    ClassicBit[] toReturn = new ClassicBit[32];
+    int flag = 1;
+    for (int i = 0; i < 32; i++, flag = flag << 1) {
+      boolean bitValue = (number & flag) == 1;
+      toReturn[i] = new ClassicBit (bitValue);
+    }
+    return toReturn;
   }
 }

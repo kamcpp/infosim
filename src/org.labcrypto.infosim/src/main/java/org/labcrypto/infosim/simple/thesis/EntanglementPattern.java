@@ -15,30 +15,33 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.labcrypto.infosim.simple.bb84;
+
+package org.labcrypto.infosim.simple.thesis;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 15, 2014
+ * @date Jan 21, 2014
  * 
  */
-public abstract class Bit {
+public class EntanglementPattern {
 
-  protected boolean value;
+  private int numberOfBits;
+  private double[] coefficients;
 
-  public Bit () {
-    setValue (false);
+  public EntanglementPattern (int numberOfBits) {
+    this.numberOfBits = numberOfBits;
+    this.coefficients = new double[numberOfBits];
   }
 
-  public Bit (boolean value) {
-    setValue (value);
+  public double get (int index) {
+    return coefficients[index];
   }
 
-  public boolean value () {
-    return value;
+  public void set (int index, double coefficient) {
+    coefficients[index] = coefficient;
   }
 
-  public void setValue (boolean value) {
-    this.value = value;
+  public int getNumberOfBits () {
+    return numberOfBits;
   }
 }

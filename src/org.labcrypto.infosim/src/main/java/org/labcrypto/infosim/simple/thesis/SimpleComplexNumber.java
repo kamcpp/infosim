@@ -15,30 +15,14 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.labcrypto.infosim.simple.bb84;
+package org.labcrypto.infosim.simple.thesis;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 15, 2014
+ * @date Jan 22, 2014
  * 
  */
-public abstract class Bit {
+public class SimpleComplexNumber extends
+    AbstractComplexNumber < SimpleRealNumber > {
 
-  protected boolean value;
-
-  public Bit () {
-    setValue (false);
-  }
-
-  public Bit (boolean value) {
-    setValue (value);
-  }
-
-  public boolean value () {
-    return value;
-  }
-
-  public void setValue (boolean value) {
-    this.value = value;
-  }
 }

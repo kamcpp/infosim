@@ -24,4 +24,11 @@ package org.labcrypto.infosim.simple.bb84;
  */
 public class ClassicBit extends Bit {
 
+  public ClassicBit () {
+    super ();
+  }
+
+  public ClassicBit (boolean value) {
+    super (value);
+  }
 }

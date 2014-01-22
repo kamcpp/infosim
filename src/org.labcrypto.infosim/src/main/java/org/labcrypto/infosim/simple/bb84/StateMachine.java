@@ -19,26 +19,18 @@ package org.labcrypto.infosim.simple.bb84;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 15, 2014
+ * @date Jan 17, 2014
  * 
  */
-public abstract class Bit {
+public class StateMachine {
 
-  protected boolean value;
+  private StateType currentState;
 
-  public Bit () {
-    setValue (false);
+  public StateType getCurrentState () {
+    return currentState;
   }
 
-  public Bit (boolean value) {
-    setValue (value);
-  }
-
-  public boolean value () {
-    return value;
-  }
-
-  public void setValue (boolean value) {
-    this.value = value;
+  public void setCurrentState (StateType currentState) {
+    this.currentState = currentState;
   }
 }

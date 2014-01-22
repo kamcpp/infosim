@@ -19,26 +19,17 @@ package org.labcrypto.infosim.simple.bb84;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 15, 2014
+ * @date Jan 16, 2014
  * 
  */
-public abstract class Bit {
-
-  protected boolean value;
-
-  public Bit () {
-    setValue (false);
-  }
-
-  public Bit (boolean value) {
-    setValue (value);
-  }
-
-  public boolean value () {
-    return value;
-  }
-
-  public void setValue (boolean value) {
-    this.value = value;
-  }
+public enum StateType {
+  InitialState,
+  AliceHasSentQuantumBits,
+  BobHasSentCalculatedBases,
+  AliceHasSentCorrectIndices,
+  BobHasReadCorrectIndices,
+  AliceRequestedSomeIndices,
+  BobHasSentRequestedIndices,
+  SharedKeyExtracted,
+  SharedKeyGenerationFailed
 }

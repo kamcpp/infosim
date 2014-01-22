@@ -18,6 +18,11 @@
 
 package org.labcrypto.infosim.simple.bb84;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Jan 15, 2014
@@ -26,32 +31,111 @@ package org.labcrypto.infosim.simple.bb84;
 public class AliceThread implements Runnable {
 
   private int numberOfBits;
+  private int numberOfTestBits;
   private Channel < QuantumBit > quantumChannel;
   private Channel < ClassicBit > classicChannel;
+  private StateMachine stateMachine;
 
   public AliceThread (int numberOfBits, Channel < QuantumBit > quantumChannel,
-      Channel < ClassicBit > classicChannel) {
+      Channel < ClassicBit > classicChannel, StateMachine stateMachine) {
     this.numberOfBits = numberOfBits;
     this.quantumChannel = quantumChannel;
     this.classicChannel = classicChannel;
+    this.stateMachine = stateMachine;
   }
 
   @Override
   public void run () {
-    boolean[] key = RandomBinaryStringGenerator.generate (numberOfBits);
-    boolean[] basis = RandomBinaryStringGenerator.generate (numberOfBits);
+    boolean[] initialKey = RandomBinaryStringGenerator.generate (numberOfBits);
+    boolean[] myBases = RandomBinaryStringGenerator.generate (numberOfBits);
 
     QuantumBit[] toSend = new QuantumBit[numberOfBits];
     for (int i = 0; i < numberOfBits; i++) {
-      BasisType b = basis[i] ? BasisType.Diagonal : BasisType.Orthogonal;
-      toSend[i] = new QuantumBit (b, key[i]);
+      BasisType b = myBases[i] ? BasisType.Diagonal : BasisType.Orthogonal;
+      toSend[i] = new QuantumBit (b, initialKey[i]);
     }
 
     quantumChannel.write (toSend);
-    synchronized (quantumChannel) {
-      quantumChannel.notifyAll ();
+    stateMachine.setCurrentState (StateType.AliceHasSentQuantumBits);
+    synchronized (stateMachine) {
+      stateMachine.notifyAll ();
     }
 
-    
+    synchronized (stateMachine) {
+      while (stateMachine.getCurrentState () != StateType.BobHasSentCalculatedBases)
+        try {
+          stateMachine.wait ();
+        } catch (InterruptedException e) {
+        }
+    }
+
+    ClassicBit[] bobBases = new ClassicBit[numberOfBits];
+    for (int i = 0; i < numberOfBits; i++) {
+      bobBases[i] = classicChannel.read ();
+    }
+
+    List < Integer > correctIndices = new ArrayList < Integer > ();
+    for (int i = 0; i < numberOfBits; i++) {
+      if (myBases[i] == bobBases[i].value ()) {
+        correctIndices.add (i);
+      }
+    }
+
+    List < ClassicBit > newKey = new ArrayList < ClassicBit > ();
+    ClassicBit[] indices = new ClassicBit[numberOfBits];
+    for (int i = 0; i < numberOfBits; i++) {
+      indices[i] = new ClassicBit (correctIndices.contains (i));
+      if (indices[i].value ()) {
+        newKey.add (indices[i]);
+      }
+    }
+
+    classicChannel.write (indices);
+    stateMachine.setCurrentState (StateType.AliceHasSentCorrectIndices);
+    synchronized (stateMachine) {
+      stateMachine.notifyAll ();
+    }
+
+    Random random = new Random ();
+    int[] testIndices = new int[numberOfTestBits];
+    for (int i = 0; i < testIndices.length; i++) {
+      testIndices[i] = random.nextInt (newKey.size ());
+    }
+
+    for (int i = 0; i < testIndices.length; i++) {
+      ClassicBit[] bits = ClassicConvertor.getClassicBits (testIndices[i]);
+      classicChannel.write (bits);
+    }
+    stateMachine.setCurrentState (StateType.AliceRequestedSomeIndices);
+    synchronized (stateMachine) {
+      stateMachine.notifyAll ();
+    }
+
+    synchronized (stateMachine) {
+      while (stateMachine.getCurrentState () != StateType.BobHasSentRequestedIndices) {
+        try {
+          stateMachine.wait ();
+        } catch (InterruptedException e) {
+          e.printStackTrace ();
+        }
+      }
+    }
+
+    List < ClassicBit > readBits = new ArrayList < ClassicBit > ();
+    for (int i = 1; i <= numberOfTestBits; i++) {
+      readBits.add (classicChannel.read ());
+    }
+
+    boolean matched = true;
+    for (int i = 0; i < readBits.size (); i++) {
+      if (newKey.get (testIndices[i]).value () != readBits.get (i).value ()) {
+        matched = false;
+        break;
+      }
+    }
+
+    if (matched) {
+
+    }
   }
 }
