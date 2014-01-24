@@ -22,96 +22,33 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public abstract class ArrayComplexMatrice < C extends ComplexNumber >
-    implements ComplexMatrice < C > {
+public abstract class ArrayComplexMatrice < C extends ComplexNumber > extends
+    AbstractComplexMatrice < C > {
 
-  private int numberOfRows;
-  private int numberOfColumnes;
   private ComplexNumber[][] matrice;
-  private ComplexNumberFactory complexNumberFactory;
 
   public ArrayComplexMatrice (int numberOfRows, int numberOfColumns,
-      ComplexNumberFactory complexNumberFactory) {
-    this.numberOfRows = numberOfRows;
-    this.numberOfColumnes = numberOfColumns;
+      ComplexNumberFactory complexNumberFactory,
+      ComplexMatriceFactory complexMatriceFactory) {
+    super (numberOfRows, numberOfColumns, complexNumberFactory,
+        complexMatriceFactory);
     this.matrice = new ComplexNumber[numberOfRows][numberOfColumns];
-    this.complexNumberFactory = complexNumberFactory;
-  }
-
-  @Override
-  public int numberOfColumns () {
-    return numberOfColumnes;
-  }
-
-  @Override
-  public int numberOfRows () {
-    return numberOfRows;
   }
 
   @Override
   @SuppressWarnings ("unchecked")
-  public C member (int rowIndex, int columnIndex) {
-    if (rowIndex >= 0 && rowIndex < numberOfRows && columnIndex >= 0
-        && columnIndex < numberOfColumnes) {
-      return (C) matrice[rowIndex][columnIndex];
+  protected C member (int i, int j, boolean clone) {
+    if (i >= 0 && i < numberOfRows () && j >= 0 && j < numberOfColumns ()) {
+      return (C) (clone ? matrice[i][j].cloneThis () : matrice[i][j]);
     }
     throw new IndexOutOfBoundsException ();
   }
 
   @Override
-  public void setMember (int rowIndex, int columnIndex, C c) {
-    if (rowIndex >= 0 && rowIndex < numberOfRows && columnIndex >= 0
-        && columnIndex < numberOfColumnes) {
-      matrice[rowIndex][columnIndex] = c.cloneThis ();
+  protected void setMember (int i, int j, C c, boolean clone) {
+    if (i >= 0 && i < numberOfRows () && j >= 0 && j < numberOfColumns ()) {
+      matrice[i][j] = clone ? c.cloneThis () : c;
     }
     throw new IndexOutOfBoundsException ();
-  }
-
-  @Override
-  public boolean isSquare () {
-    return numberOfColumnes == numberOfRows;
-  }
-
-  @Override
-  public boolean isIdentity () {
-    if (!isSquare ()) {
-      return false;
-    }
-    for (int i = 0; i < numberOfRows; i++) {
-      for (int j = 0; j < numberOfColumnes; j++) {
-        if (i != j && !matrice[i][j].isZero ()) {
-          return false;
-        }
-        if (i == j && !matrice[i][j].isOne ()) {
-          return false;
-        }
-      }
-    }
-    return true;
-  }
-
-  @Override
-  public void makeZero () {
-    for (int i = 0; i < numberOfRows; i++) {
-      for (int j = 0; j < numberOfColumnes; j++) {
-        matrice[i][j] = complexNumberFactory.createZero ();
-      }
-    }
-  }
-
-  @Override
-  public void makeIdentity () {
-    if (!isSquare ()) {
-      throw new MatriceIsNotSquareException ();
-    }
-    for (int i = 0; i < numberOfRows; i++) {
-      for (int j = 0; j < numberOfColumnes; j++) {
-        if (i != j) {
-          matrice[i][j] = complexNumberFactory.createZero ();
-        } else {
-          matrice[i][j] = complexNumberFactory.createOne ();
-        }
-      }
-    }
   }
 }

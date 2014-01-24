@@ -19,19 +19,18 @@ package org.labcrypto.infosim.simple.thesis;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 23, 2014
+ * @date Jan 24, 2014
  * 
  */
-public interface ComplexMatrice < C extends ComplexNumber > extends
-    Cloneable < ComplexMatrice < C >> {
+public interface ComplexMatrice extends Cloneable < ComplexMatrice > {
 
   int numberOfColumns ();
 
   int numberOfRows ();
 
-  C member (int rowIndex, int columnIndex);
+  Object member (int rowIndex, int columnIndex);
 
-  void setMember (int rowIndex, int columnIndex, C c);
+  void setMember (int rowIndex, int columnIndex, Object c);
 
   boolean isSquare ();
 
@@ -45,16 +44,16 @@ public interface ComplexMatrice < C extends ComplexNumber > extends
 
   RealNumber determinant ();
 
-  ComplexMatrice < C > negative ();
+  ComplexMatrice negative ();
 
-  ComplexMatrice < C > inverse ();
+  ComplexMatrice inverse ();
 
-  ComplexMatrice < C > transpose ();
+  ComplexMatrice transpose ();
 
-  ComplexMatrice < C > add (ComplexMatrice < C > m);
+  ComplexMatrice add (ComplexMatrice m);
 
-  ComplexMatrice < C > subtract (ComplexMatrice < C > m);
+  ComplexMatrice subtract (ComplexMatrice m);
 
-  ComplexMatrice < C > multiply (ComplexMatrice < C > m);
+  ComplexMatrice multiply (ComplexMatrice m);
 
 }

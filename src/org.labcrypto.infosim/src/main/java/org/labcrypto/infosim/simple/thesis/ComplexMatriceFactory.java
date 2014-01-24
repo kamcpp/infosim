@@ -15,7 +15,6 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package org.labcrypto.infosim.simple.thesis;
 
 /**
@@ -23,27 +22,10 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexMatrice extends
-    ArrayComplexMatrice < SimpleComplexNumber > {
+public interface ComplexMatriceFactory {
 
-  public SimpleComplexMatrice (int numberOfRows, int numberOfColumns) {
-    super (numberOfRows, numberOfColumns, new SimpleComplexNumberFactory (),
-        new SimpleComplexMatriceFactory ());
-  }
+  ComplexMatrice makeZero (int numberOfRows, int numberOfColumns);
 
-  public SimpleComplexMatrice (int numberOfRows, int numberOfColumns,
-      SimpleComplexMatriceFactory simpleComplexMatriceFactory) {
-    super (numberOfRows, numberOfColumns, new SimpleComplexNumberFactory (),
-        simpleComplexMatriceFactory);
-  }
+  ComplexMatrice makeIdentity (int numberOfRows, int numberOfColumns);
 
-  @Override
-  public Class < RealNumber > determinantType () {
-    return null;
-  }
-
-  @Override
-  public RealNumber determinant () {
-    throw new MatrixOperationNotSupportedException ();
-  }
 }

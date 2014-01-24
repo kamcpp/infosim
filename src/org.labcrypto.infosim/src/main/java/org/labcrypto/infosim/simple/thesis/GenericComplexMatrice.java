@@ -15,35 +15,46 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-
 package org.labcrypto.infosim.simple.thesis;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 24, 2014
+ * @date Jan 23, 2014
  * 
  */
-public class SimpleComplexMatrice extends
-    ArrayComplexMatrice < SimpleComplexNumber > {
+public interface GenericComplexMatrice < C extends ComplexNumber > extends
+    ComplexMatrice {
 
-  public SimpleComplexMatrice (int numberOfRows, int numberOfColumns) {
-    super (numberOfRows, numberOfColumns, new SimpleComplexNumberFactory (),
-        new SimpleComplexMatriceFactory ());
-  }
+  int numberOfColumns ();
 
-  public SimpleComplexMatrice (int numberOfRows, int numberOfColumns,
-      SimpleComplexMatriceFactory simpleComplexMatriceFactory) {
-    super (numberOfRows, numberOfColumns, new SimpleComplexNumberFactory (),
-        simpleComplexMatriceFactory);
-  }
+  int numberOfRows ();
 
-  @Override
-  public Class < RealNumber > determinantType () {
-    return null;
-  }
+  C member (int rowIndex, int columnIndex);
 
-  @Override
-  public RealNumber determinant () {
-    throw new MatrixOperationNotSupportedException ();
-  }
+  void setMember (int rowIndex, int columnIndex, C c);
+
+  boolean isSquare ();
+
+  boolean isIdentity ();
+
+  void makeZero ();
+
+  void makeIdentity ();
+
+  Class < RealNumber > determinantType ();
+
+  RealNumber determinant ();
+
+  GenericComplexMatrice < C > negative ();
+
+  GenericComplexMatrice < C > inverse ();
+
+  GenericComplexMatrice < C > transpose ();
+
+  GenericComplexMatrice < C > add (GenericComplexMatrice < C > m);
+
+  GenericComplexMatrice < C > subtract (GenericComplexMatrice < C > m);
+
+  GenericComplexMatrice < C > multiply (GenericComplexMatrice < C > m);
+
 }
