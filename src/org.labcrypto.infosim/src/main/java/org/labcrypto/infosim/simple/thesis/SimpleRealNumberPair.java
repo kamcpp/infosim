@@ -48,4 +48,28 @@ public class SimpleRealNumberPair {
   public void setNumber2 (SimpleRealNumberValueType number2) {
     this.number2 = number2;
   }
+
+  @Override
+  public int hashCode () {
+    return (number1.getNumber () + number2.getNumber ())
+        * (number1.getNumber () + number2.getNumber () + 1) / 2
+        + number2.getNumber ();
+  }
+
+  @Override
+  public boolean equals (Object obj) {
+    if (obj == null) {
+      return false;
+    }
+    if (obj == this) {
+      return true;
+    }
+    if (obj instanceof SimpleRealNumberPair) {
+      SimpleRealNumberPair simpleRealNumberPair = (SimpleRealNumberPair) obj;
+      return simpleRealNumberPair.getNumber1 ().equals (number1)
+          && simpleRealNumberPair.getNumber2 ().equals (number2);
+    } else {
+      return false;
+    }
+  }
 }

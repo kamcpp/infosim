@@ -22,34 +22,39 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 23, 2014
  * 
  */
-public interface ComplexMatrice < ComplexNumberType > {
+public interface ComplexMatrice < C extends ComplexNumber > extends
+    Cloneable < ComplexMatrice < C >> {
 
   int numberOfColumns ();
 
   int numberOfRows ();
 
-  ComplexNumberType member (int rowIndex, int columnIndex);
+  C member (int rowIndex, int columnIndex);
 
-  void setMember (int rowIndex, int columnIndex, ComplexNumberType c);
+  void setMember (int rowIndex, int columnIndex, C c);
 
   boolean isSquare ();
 
   boolean isIdentity ();
 
+  void makeZero ();
+
   void makeIdentity ();
 
-  
-  ComplexMatrice < ComplexNumberType > negative ();
+  Class < RealNumber > determinantType ();
 
-  ComplexMatrice < ComplexNumberType > inverse ();
+  RealNumber determinant ();
 
-  ComplexMatrice < ComplexNumberType > add (
-      ComplexMatrice < ComplexNumberType > m);
+  ComplexMatrice < C > negative ();
 
-  ComplexMatrice < ComplexNumberType > subtract (
-      ComplexMatrice < ComplexNumberType > m);
+  ComplexMatrice < C > inverse ();
 
-  ComplexMatrice < ComplexNumberType > multiply (
-      ComplexMatrice < ComplexNumberType > m);
+  ComplexMatrice < C > transpose ();
+
+  ComplexMatrice < C > add (ComplexMatrice < C > m);
+
+  ComplexMatrice < C > subtract (ComplexMatrice < C > m);
+
+  ComplexMatrice < C > multiply (ComplexMatrice < C > m);
 
 }

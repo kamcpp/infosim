@@ -19,27 +19,35 @@ package org.labcrypto.infosim.simple.thesis;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 22, 2014
+ * @date Jan 24, 2014
  * 
  */
-public interface ComplexNumber < RealNumberType > {
+public interface ComplexNumber extends Cloneable < ComplexNumber > {
 
-  ComplexNumber < RealNumberType > negative ();
+  boolean isOne ();
 
-  ComplexNumber < RealNumberType > inverse ();
+  boolean isZero ();
 
-  ComplexNumber < RealNumberType > conjugate ();
+  void makeOne ();
 
-  ComplexNumber < RealNumberType > add (ComplexNumber < RealNumberType > a);
+  void makeZero ();
 
-  ComplexNumber < RealNumberType > multiply (ComplexNumber < RealNumberType > a);
+  ComplexNumber negative ();
 
-  ComplexNumber < RealNumberType > subtract (ComplexNumber < RealNumberType > a);
+  ComplexNumber inverse ();
 
-  ComplexNumber < RealNumberType > divide (ComplexNumber < RealNumberType > a);
+  ComplexNumber conjugate ();
 
-  RealNumberType real ();
+  ComplexNumber add (ComplexNumber a);
 
-  RealNumberType imaginary ();
+  ComplexNumber multiply (ComplexNumber a);
+
+  ComplexNumber subtract (ComplexNumber a);
+
+  ComplexNumber divide (ComplexNumber a);
+
+  Object real ();
+
+  Object imaginary ();
 
 }

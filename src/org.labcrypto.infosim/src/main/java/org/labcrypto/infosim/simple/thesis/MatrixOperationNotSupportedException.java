@@ -22,7 +22,8 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public class WrongMatrixDimensionsForMultiplicationException extends
-    RuntimeException {
+public class MatrixOperationNotSupportedException extends RuntimeException {
+
+  private static final long serialVersionUID = 706960931807042564L;
 
 }

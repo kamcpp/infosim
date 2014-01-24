@@ -22,7 +22,15 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public interface RealNumber {
+public interface RealNumber extends Cloneable < RealNumber > {
+
+  boolean isOne ();
+
+  boolean isZero ();
+
+  void makeOne ();
+
+  void makeZero ();
 
   Object getValue ();
 

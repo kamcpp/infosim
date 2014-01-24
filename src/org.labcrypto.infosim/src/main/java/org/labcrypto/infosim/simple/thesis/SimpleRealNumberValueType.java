@@ -23,13 +23,23 @@ package org.labcrypto.infosim.simple.thesis;
  * 
  */
 public enum SimpleRealNumberValueType {
-  MinusTwo,
-  MinusOne,
-  MinusOneOverTwoSquared,
-  MinusHalf,
-  Zero,
-  PositiveHalf,
-  PositiveOneOverTwoSquared,
-  PositiveOne,
-  PositiveTwo
+  MinusTwo (0),
+  MinusOne (1),
+  MinusOneOverTwoSquared (2),
+  MinusHalf (3),
+  Zero (4),
+  PositiveHalf (5),
+  PositiveOneOverTwoSquared (6),
+  PositiveOne (7),
+  PositiveTwo (8);
+
+  private int number;
+
+  SimpleRealNumberValueType (int number) {
+    this.number = number;
+  }
+
+  public int getNumber () {
+    return number;
+  }
 }

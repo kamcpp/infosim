@@ -19,50 +19,20 @@ package org.labcrypto.infosim.simple.thesis;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 22, 2014
+ * @date Jan 24, 2014
  * 
  */
-public abstract class AbstractComplexNumber < R extends RealNumber > implements
-    GenericComplexNumber < R > {
+public class SimpleComplexNumberFactory implements ComplexNumberFactory {
 
-  protected R real;
-  protected R imaginary;
-
-  @SuppressWarnings ("unchecked")
-  public AbstractComplexNumber (R real, R imaginary) {
-    this.real = (R) real.cloneThis ();
-    this.imaginary = (R) imaginary.cloneThis ();
+  @Override
+  public ComplexNumber createOne () {
+    SimpleComplexNumber c = new SimpleComplexNumber ();
+    c.makeOne ();
+    return c;
   }
 
   @Override
-  public boolean isOne () {
-    return real.isOne () && imaginary.isZero ();
-  }
-
-  @Override
-  public boolean isZero () {
-    return real.isZero () && imaginary.isZero ();
-  }
-
-  @Override
-  public void makeOne () {
-    real.makeOne ();
-    imaginary.makeZero ();
-  }
-
-  @Override
-  public void makeZero () {
-    real.makeZero ();
-    imaginary.makeZero ();
-  }
-
-  @Override
-  public R real () {
-    return real;
-  }
-
-  @Override
-  public R imaginary () {
-    return imaginary;
+  public ComplexNumber createZero () {
+    return new SimpleComplexNumber ();
   }
 }

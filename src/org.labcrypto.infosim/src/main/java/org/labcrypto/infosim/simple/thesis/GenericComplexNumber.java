@@ -22,47 +22,25 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 22, 2014
  * 
  */
-public abstract class AbstractComplexNumber < R extends RealNumber > implements
-    GenericComplexNumber < R > {
+public interface GenericComplexNumber < R extends RealNumber > extends
+    ComplexNumber {
 
-  protected R real;
-  protected R imaginary;
+  GenericComplexNumber < R > negative ();
 
-  @SuppressWarnings ("unchecked")
-  public AbstractComplexNumber (R real, R imaginary) {
-    this.real = (R) real.cloneThis ();
-    this.imaginary = (R) imaginary.cloneThis ();
-  }
+  GenericComplexNumber < R > inverse ();
 
-  @Override
-  public boolean isOne () {
-    return real.isOne () && imaginary.isZero ();
-  }
+  GenericComplexNumber < R > conjugate ();
 
-  @Override
-  public boolean isZero () {
-    return real.isZero () && imaginary.isZero ();
-  }
+  GenericComplexNumber < R > add (GenericComplexNumber < R > a);
 
-  @Override
-  public void makeOne () {
-    real.makeOne ();
-    imaginary.makeZero ();
-  }
+  GenericComplexNumber < R > multiply (GenericComplexNumber < R > a);
 
-  @Override
-  public void makeZero () {
-    real.makeZero ();
-    imaginary.makeZero ();
-  }
+  GenericComplexNumber < R > subtract (GenericComplexNumber < R > a);
 
-  @Override
-  public R real () {
-    return real;
-  }
+  GenericComplexNumber < R > divide (GenericComplexNumber < R > a);
 
-  @Override
-  public R imaginary () {
-    return imaginary;
-  }
+  R real ();
+
+  R imaginary ();
+
 }

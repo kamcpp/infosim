@@ -28,8 +28,32 @@ public class SimpleRealNumber implements
 
   private SimpleRealNumberValueType value;
 
+  public SimpleRealNumber () {
+    this.value = SimpleRealNumberValueType.Zero;
+  }
+
   public SimpleRealNumber (SimpleRealNumberValueType value) {
     this.value = value;
+  }
+
+  @Override
+  public boolean isOne () {
+    return value == SimpleRealNumberValueType.PositiveOne;
+  }
+
+  @Override
+  public boolean isZero () {
+    return value == SimpleRealNumberValueType.Zero;
+  }
+
+  @Override
+  public void makeOne () {
+    value = SimpleRealNumberValueType.PositiveOne;
+  }
+
+  @Override
+  public void makeZero () {
+    value = SimpleRealNumberValueType.Zero;
   }
 
   public SimpleRealNumberValueType getValue () {
@@ -113,5 +137,32 @@ public class SimpleRealNumber implements
   @Override
   public RealNumber divide (RealNumber a) {
     return divide ((SimpleRealNumber) (a));
+  }
+
+  @Override
+  public int hashCode () {
+    return value.getNumber ();
+  }
+
+  @Override
+  public boolean equals (Object obj) {
+    if (obj == null) {
+      return false;
+    }
+    if (obj == this) {
+      return true;
+    }
+    if (obj instanceof SimpleRealNumber) {
+      SimpleRealNumber simpleRealNumber = (SimpleRealNumber) obj;
+      return value == simpleRealNumber.getValue ();
+    } else {
+      return false;
+    }
+  }
+
+  @Override
+  public RealNumber cloneThis () {
+    SimpleRealNumber clone = new SimpleRealNumber (value);
+    return clone;
   }
 }

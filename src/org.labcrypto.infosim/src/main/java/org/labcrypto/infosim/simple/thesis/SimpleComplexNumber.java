@@ -25,6 +25,10 @@ package org.labcrypto.infosim.simple.thesis;
 public class SimpleComplexNumber extends
     AbstractComplexNumber < SimpleRealNumber > {
 
+  public SimpleComplexNumber () {
+    super (new SimpleRealNumber (), new SimpleRealNumber ());
+  }
+
   public SimpleComplexNumber (SimpleRealNumber real, SimpleRealNumber imaginary) {
     super (real, imaginary);
   }
@@ -46,25 +50,53 @@ public class SimpleComplexNumber extends
   }
 
   @Override
-  public SimpleComplexNumber add (ComplexNumber < SimpleRealNumber > a) {
+  public SimpleComplexNumber add (GenericComplexNumber < SimpleRealNumber > a) {
     return new SimpleComplexNumber (real.add (a.real ()), imaginary.add (a
         .imaginary ()));
   }
 
   @Override
-  public SimpleComplexNumber multiply (ComplexNumber < SimpleRealNumber > a) {
+  public SimpleComplexNumber multiply (
+      GenericComplexNumber < SimpleRealNumber > a) {
     return new SimpleComplexNumber (real.multiply (a.real ())
         .subtract (imaginary).multiply (a.imaginary ()), real
         .multiply (a.imaginary ()).add (imaginary).multiply (a.real ()));
   }
 
   @Override
-  public SimpleComplexNumber subtract (ComplexNumber < SimpleRealNumber > a) {
+  public SimpleComplexNumber subtract (
+      GenericComplexNumber < SimpleRealNumber > a) {
     return add (a.negative ());
   }
 
   @Override
-  public SimpleComplexNumber divide (ComplexNumber < SimpleRealNumber > a) {
+  public SimpleComplexNumber divide (GenericComplexNumber < SimpleRealNumber > a) {
     return multiply (a.inverse ());
+  }
+
+  @Override
+  public ComplexNumber add (ComplexNumber a) {
+    return add ((SimpleComplexNumber) a);
+  }
+
+  @Override
+  public ComplexNumber multiply (ComplexNumber a) {
+    return multiply ((SimpleComplexNumber) a);
+  }
+
+  @Override
+  public ComplexNumber subtract (ComplexNumber a) {
+    return subtract ((SimpleComplexNumber) a);
+  }
+
+  @Override
+  public ComplexNumber divide (ComplexNumber a) {
+    return divide ((SimpleComplexNumber) a);
+  }
+
+  @Override
+  public ComplexNumber cloneThis () {
+    SimpleComplexNumber clone = new SimpleComplexNumber (real (), imaginary ());
+    return clone;
   }
 }
