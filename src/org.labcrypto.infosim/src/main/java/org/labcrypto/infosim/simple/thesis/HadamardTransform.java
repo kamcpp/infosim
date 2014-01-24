@@ -17,6 +17,12 @@
  */
 package org.labcrypto.infosim.simple.thesis;
 
+import org.labcrypto.infosim.simple.thesis.math.SimpleComplexMatrice;
+import org.labcrypto.infosim.simple.thesis.math.SimpleComplexNumber;
+import org.labcrypto.infosim.simple.thesis.math.SimpleRealNumber;
+import org.labcrypto.infosim.simple.thesis.math.SimpleRealNumberValueType;
+
+
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Jan 24, 2014
