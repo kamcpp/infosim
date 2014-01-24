@@ -56,4 +56,6 @@ public interface ComplexMatrice extends Cloneable < ComplexMatrice > {
 
   ComplexMatrice multiply (ComplexMatrice m);
 
+  ComplexMatrice scalarMultiply (ComplexNumber c);
+
 }

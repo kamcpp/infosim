@@ -22,17 +22,9 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexVector extends
-    ArrayComplexVector < SimpleComplexNumber > {
+public class WrongDimensionsForCreatingComplexVectorException extends
+    RuntimeException {
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        new SimpleComplexVectorFactory ());
-  }
+  private static final long serialVersionUID = 5465021143008764138L;
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      SimpleComplexVectorFactory simpleComplexVectoryFactory) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        simpleComplexVectoryFactory);
-  }
 }

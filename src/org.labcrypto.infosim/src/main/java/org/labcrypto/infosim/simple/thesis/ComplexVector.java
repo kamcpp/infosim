@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.labcrypto.infosim.simple.thesis;
 
 /**
@@ -22,17 +23,30 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexVector extends
-    ArrayComplexVector < SimpleComplexNumber > {
+public interface ComplexVector extends ComplexMatrice {
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        new SimpleComplexVectorFactory ());
-  }
+  boolean isVertical ();
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      SimpleComplexVectorFactory simpleComplexVectoryFactory) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        simpleComplexVectoryFactory);
-  }
+  boolean isHorizantal ();
+
+  int numberOfElements ();
+
+  Object member (int index);
+
+  void setMember (int index, Object complexNumber);
+
+  ComplexVector negative ();
+
+  ComplexVector inverse ();
+
+  ComplexVector transpose ();
+
+  ComplexVector add (ComplexVector v);
+
+  ComplexVector subtract (ComplexVector v);
+
+  ComplexVector multiply (ComplexVector v);
+
+  ComplexVector scalarMultiply (ComplexNumber c);
+
 }

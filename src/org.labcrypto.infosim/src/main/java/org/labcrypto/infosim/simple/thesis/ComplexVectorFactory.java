@@ -22,17 +22,8 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexVector extends
-    ArrayComplexVector < SimpleComplexNumber > {
+public interface ComplexVectorFactory extends ComplexMatriceFactory {
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        new SimpleComplexVectorFactory ());
-  }
+  ComplexVector makerZero (int numberOfElements, boolean horizantal);
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      SimpleComplexVectorFactory simpleComplexVectoryFactory) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        simpleComplexVectoryFactory);
-  }
 }

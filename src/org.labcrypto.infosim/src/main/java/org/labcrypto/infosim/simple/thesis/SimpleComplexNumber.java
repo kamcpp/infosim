@@ -29,6 +29,10 @@ public class SimpleComplexNumber extends
     super (new SimpleRealNumber (), new SimpleRealNumber ());
   }
 
+  public SimpleComplexNumber (SimpleRealNumber real) {
+    super (real, new SimpleRealNumber ());
+  }
+
   public SimpleComplexNumber (SimpleRealNumber real, SimpleRealNumber imaginary) {
     super (real, imaginary);
   }

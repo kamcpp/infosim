@@ -24,8 +24,8 @@ package org.labcrypto.infosim.simple.thesis;
  */
 public interface ComplexNumberFactory {
 
-  ComplexNumber createOne ();
+  ComplexNumber makeOne ();
 
-  ComplexNumber createZero ();
+  ComplexNumber makeZero ();
 
 }

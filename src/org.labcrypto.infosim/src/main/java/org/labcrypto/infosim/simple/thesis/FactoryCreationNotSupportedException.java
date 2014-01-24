@@ -22,17 +22,8 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexVector extends
-    ArrayComplexVector < SimpleComplexNumber > {
+public class FactoryCreationNotSupportedException extends RuntimeException {
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        new SimpleComplexVectorFactory ());
-  }
+  private static final long serialVersionUID = -603518652173532535L;
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      SimpleComplexVectorFactory simpleComplexVectoryFactory) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        simpleComplexVectoryFactory);
-  }
 }

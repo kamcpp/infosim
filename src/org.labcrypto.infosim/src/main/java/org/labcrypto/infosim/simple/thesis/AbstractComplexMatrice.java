@@ -97,7 +97,7 @@ public abstract class AbstractComplexMatrice < C extends ComplexNumber >
   public void makeZero () {
     for (int i = 0; i < numberOfRows; i++) {
       for (int j = 0; j < numberOfColumnes; j++) {
-        setMember (i, j, (C) complexNumberFactory.createZero (), false);
+        setMember (i, j, (C) complexNumberFactory.makeZero (), false);
       }
     }
   }
@@ -111,9 +111,9 @@ public abstract class AbstractComplexMatrice < C extends ComplexNumber >
     for (int i = 0; i < numberOfRows; i++) {
       for (int j = 0; j < numberOfColumnes; j++) {
         if (i != j) {
-          setMember (i, j, (C) complexNumberFactory.createZero (), false);
+          setMember (i, j, (C) complexNumberFactory.makeZero (), false);
         } else {
-          setMember (i, j, (C) complexNumberFactory.createOne (), false);
+          setMember (i, j, (C) complexNumberFactory.makeOne (), false);
         }
       }
     }
@@ -178,7 +178,7 @@ public abstract class AbstractComplexMatrice < C extends ComplexNumber >
           .makeZero (numberOfRows (), m.numberOfColumns ());
       for (int i = 0; i < numberOfRows (); i++) {
         for (int j = 0; j < m.numberOfColumns (); j++) {
-          ComplexNumber sum = complexNumberFactory.createZero ();
+          ComplexNumber sum = complexNumberFactory.makeZero ();
           for (int k = 0; k < numberOfColumns (); k++) {
             sum = sum.add (member (i, k).multiply (m.member (k, j)));
           }
@@ -189,6 +189,19 @@ public abstract class AbstractComplexMatrice < C extends ComplexNumber >
     } else {
       throw new WrongDimensionsForMatrixMultiplicationException ();
     }
+  }
+
+  @Override
+  @SuppressWarnings ("unchecked")
+  public GenericComplexMatrice < C > scalarMultiply (ComplexNumber c) {
+    GenericComplexMatrice < C > result = (GenericComplexMatrice < C >) complexMatriceFactory
+        .makeZero (numberOfRows (), numberOfColumns ());
+    for (int i = 0; i < numberOfRows (); i++) {
+      for (int j = 0; j < numberOfColumns (); j++) {
+        result.setMember (i, j, member (i, j).multiply (c));
+      }
+    }
+    return result;
   }
 
   @Override

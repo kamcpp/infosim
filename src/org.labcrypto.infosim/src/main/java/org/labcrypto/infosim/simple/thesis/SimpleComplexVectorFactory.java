@@ -22,17 +22,31 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexNumberFactory implements ComplexNumberFactory {
+public class SimpleComplexVectorFactory implements ComplexVectorFactory {
 
   @Override
-  public ComplexNumber makeOne () {
-    SimpleComplexNumber c = new SimpleComplexNumber ();
-    c.makeOne ();
-    return c;
+  public ComplexMatrice makeZero (int numberOfRows, int numberOfColumns) {
+    if (numberOfRows > 1 && numberOfColumns > 1) {
+      throw new WrongDimensionsForCreatingComplexVectorException ();
+    }
+    boolean horizantal = numberOfRows == 1;
+    int numberOfElements = horizantal ? numberOfColumns : numberOfRows;
+    SimpleComplexVector v = new SimpleComplexVector (numberOfElements,
+        horizantal, this);
+    v.makeZero ();
+    return v;
   }
 
   @Override
-  public ComplexNumber makeZero () {
-    return new SimpleComplexNumber ();
+  public ComplexMatrice makeIdentity (int numberOfRows, int numberOfColumns) {
+    throw new FactoryCreationNotSupportedException ();
+  }
+
+  @Override
+  public ComplexVector makerZero (int numberOfElements, boolean horizantal) {
+    SimpleComplexVector v = new SimpleComplexVector (numberOfElements,
+        horizantal, this);
+    v.makeZero ();
+    return v;
   }
 }

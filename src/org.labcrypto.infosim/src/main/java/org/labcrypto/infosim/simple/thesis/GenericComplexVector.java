@@ -22,17 +22,24 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexVector extends
-    ArrayComplexVector < SimpleComplexNumber > {
+public interface GenericComplexVector < C extends ComplexNumber > extends
+    ComplexVector, GenericComplexMatrice < C > {
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        new SimpleComplexVectorFactory ());
-  }
+  C member (int index);
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      SimpleComplexVectorFactory simpleComplexVectoryFactory) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        simpleComplexVectoryFactory);
-  }
+  void setMember (int index, C complexNumber);
+
+  GenericComplexVector < C > negative ();
+
+  GenericComplexVector < C > inverse ();
+
+  GenericComplexVector < C > transpose ();
+
+  GenericComplexVector < C > add (GenericComplexVector < C > v);
+
+  GenericComplexVector < C > subtract (GenericComplexVector < C > v);
+
+  GenericComplexVector < C > multiply (GenericComplexVector < C > v);
+
+  GenericComplexVector < C > scalarMultiply (ComplexNumber c);
 }

@@ -22,17 +22,18 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexVector extends
-    ArrayComplexVector < SimpleComplexNumber > {
+public class HadamardTransform extends SimpleComplexMatrice {
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        new SimpleComplexVectorFactory ());
+  public HadamardTransform () {
+    super (2, 2);
+    setMember (0, 0, new SimpleComplexNumber (new SimpleRealNumber (
+        SimpleRealNumberValueType.PositiveOneOverTwoSquared)));
+    setMember (0, 1, new SimpleComplexNumber (new SimpleRealNumber (
+        SimpleRealNumberValueType.PositiveOneOverTwoSquared)));
+    setMember (1, 0, new SimpleComplexNumber (new SimpleRealNumber (
+        SimpleRealNumberValueType.PositiveOneOverTwoSquared)));
+    setMember (1, 1, new SimpleComplexNumber (new SimpleRealNumber (
+        SimpleRealNumberValueType.MinusOneOverTwoSquared)));
   }
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      SimpleComplexVectorFactory simpleComplexVectoryFactory) {
-    super (numberOfElements, horizantal, new SimpleComplexNumberFactory (),
-        simpleComplexVectoryFactory);
-  }
 }
