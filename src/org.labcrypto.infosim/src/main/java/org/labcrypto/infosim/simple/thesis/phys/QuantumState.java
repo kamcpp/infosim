@@ -15,27 +15,13 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.labcrypto.infosim.simple.thesis.math;
+package org.labcrypto.infosim.simple.thesis.phys;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexVector extends
-    ArrayComplexVector < SimpleComplexNumber > {
+public class QuantumState {
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      VectorSpace vectorSpace) {
-    super (numberOfElements, horizantal, vectorSpace,
-        new SimpleComplexNumberFactory (), new SimpleComplexVectorFactory (
-            vectorSpace));
-  }
-
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      VectorSpace vectorSpace,
-      SimpleComplexVectorFactory simpleComplexVectoryFactory) {
-    super (numberOfElements, horizantal, vectorSpace,
-        new SimpleComplexNumberFactory (), simpleComplexVectoryFactory);
-  }
 }

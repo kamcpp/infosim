@@ -28,9 +28,9 @@ public class ArrayComplexVector < C extends ComplexNumber > extends
   private ComplexNumber[] array;
 
   public ArrayComplexVector (int numberOfElements, boolean horizantal,
-      ComplexNumberFactory complexNumberFactory,
+      VectorSpace vectorSpace, ComplexNumberFactory complexNumberFactory,
       ComplexMatriceFactory complexMatriceFactory) {
-    super (numberOfElements, horizantal, complexNumberFactory,
+    super (numberOfElements, horizantal, vectorSpace, complexNumberFactory,
         complexMatriceFactory);
     array = new ComplexNumber[numberOfElements];
   }

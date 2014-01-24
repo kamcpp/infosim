@@ -35,6 +35,8 @@ public interface ComplexVector extends ComplexMatrice {
 
   void setMember (int index, Object complexNumber);
 
+  VectorSpace getVectorSpace ();
+
   ComplexVector negative ();
 
   ComplexVector inverse ();

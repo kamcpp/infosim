@@ -22,20 +22,31 @@ package org.labcrypto.infosim.simple.thesis.math;
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexVector extends
-    ArrayComplexVector < SimpleComplexNumber > {
+public class ArrayFiniteVectorSpace < V extends ComplexVector > extends
+    AbstractFiniteVectorSpace < V > {
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      VectorSpace vectorSpace) {
-    super (numberOfElements, horizantal, vectorSpace,
-        new SimpleComplexNumberFactory (), new SimpleComplexVectorFactory (
-            vectorSpace));
+  private ComplexVector[] basis;
+
+  public ArrayFiniteVectorSpace (int numberOfDimensions) {
+    super (numberOfDimensions);
+    basis = new ComplexVector[numberOfDimensions];
   }
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      VectorSpace vectorSpace,
-      SimpleComplexVectorFactory simpleComplexVectoryFactory) {
-    super (numberOfElements, horizantal, vectorSpace,
-        new SimpleComplexNumberFactory (), simpleComplexVectoryFactory);
+  @Override
+  @SuppressWarnings ("unchecked")
+  public V base (int index) {
+    if (index >= 0 && index < numberOfDimensions ()) {
+      return (V) basis[index];
+    }
+    throw new IndexOutOfBoundsException ();
+  }
+
+  @Override
+  @SuppressWarnings ("unchecked")
+  protected void addBaseVector (int index, V base) {
+    if (index >= 0 && index < numberOfDimensions ()) {
+      basis[index] = (V) base.cloneThis ();
+    }
+    throw new IndexOutOfBoundsException ();
   }
 }

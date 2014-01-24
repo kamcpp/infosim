@@ -22,20 +22,9 @@ package org.labcrypto.infosim.simple.thesis.math;
  * @date Jan 24, 2014
  * 
  */
-public class SimpleComplexVector extends
-    ArrayComplexVector < SimpleComplexNumber > {
+public interface GenericFiniteVectorSpace < V extends ComplexVector > extends
+    FiniteVectorSpace {
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      VectorSpace vectorSpace) {
-    super (numberOfElements, horizantal, vectorSpace,
-        new SimpleComplexNumberFactory (), new SimpleComplexVectorFactory (
-            vectorSpace));
-  }
+  V base (int index);
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      VectorSpace vectorSpace,
-      SimpleComplexVectorFactory simpleComplexVectoryFactory) {
-    super (numberOfElements, horizantal, vectorSpace,
-        new SimpleComplexNumberFactory (), simpleComplexVectoryFactory);
-  }
 }

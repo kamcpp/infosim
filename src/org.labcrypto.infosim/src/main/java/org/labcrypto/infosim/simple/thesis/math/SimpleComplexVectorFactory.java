@@ -24,6 +24,17 @@ package org.labcrypto.infosim.simple.thesis.math;
  */
 public class SimpleComplexVectorFactory implements ComplexVectorFactory {
 
+  private VectorSpace vectorSpace;
+
+  public SimpleComplexVectorFactory (VectorSpace vectorSpace) {
+    this.vectorSpace = vectorSpace;
+  }
+
+  @Override
+  public VectorSpace getVectorSpace () {
+    return vectorSpace;
+  }
+
   @Override
   public ComplexMatrice makeZero (int numberOfRows, int numberOfColumns) {
     if (numberOfRows > 1 && numberOfColumns > 1) {
@@ -32,7 +43,7 @@ public class SimpleComplexVectorFactory implements ComplexVectorFactory {
     boolean horizantal = numberOfRows == 1;
     int numberOfElements = horizantal ? numberOfColumns : numberOfRows;
     SimpleComplexVector v = new SimpleComplexVector (numberOfElements,
-        horizantal, this);
+        horizantal, vectorSpace, this);
     v.makeZero ();
     return v;
   }
@@ -45,7 +56,7 @@ public class SimpleComplexVectorFactory implements ComplexVectorFactory {
   @Override
   public ComplexVector makerZero (int numberOfElements, boolean horizantal) {
     SimpleComplexVector v = new SimpleComplexVector (numberOfElements,
-        horizantal, this);
+        horizantal, vectorSpace, this);
     v.makeZero ();
     return v;
   }

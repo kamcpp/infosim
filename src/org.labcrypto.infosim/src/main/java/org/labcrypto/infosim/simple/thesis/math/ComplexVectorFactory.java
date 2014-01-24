@@ -24,6 +24,8 @@ package org.labcrypto.infosim.simple.thesis.math;
  */
 public interface ComplexVectorFactory extends ComplexMatriceFactory {
 
+  VectorSpace getVectorSpace ();
+
   ComplexVector makerZero (int numberOfElements, boolean horizantal);
 
 }

@@ -19,23 +19,13 @@ package org.labcrypto.infosim.simple.thesis.math;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 24, 2014
+ * @date Jan 23, 2014
  * 
  */
-public class SimpleComplexVector extends
-    ArrayComplexVector < SimpleComplexNumber > {
+public interface FiniteVectorSpace extends VectorSpace {
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      VectorSpace vectorSpace) {
-    super (numberOfElements, horizantal, vectorSpace,
-        new SimpleComplexNumberFactory (), new SimpleComplexVectorFactory (
-            vectorSpace));
-  }
+  int numberOfDimensions ();
 
-  public SimpleComplexVector (int numberOfElements, boolean horizantal,
-      VectorSpace vectorSpace,
-      SimpleComplexVectorFactory simpleComplexVectoryFactory) {
-    super (numberOfElements, horizantal, vectorSpace,
-        new SimpleComplexNumberFactory (), simpleComplexVectoryFactory);
-  }
+  ComplexVector base (int index);
+
 }

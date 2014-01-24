@@ -25,18 +25,28 @@ package org.labcrypto.infosim.simple.thesis.math;
 public abstract class AbstractComplexVector < C extends ComplexNumber > extends
     AbstractComplexMatrice < C > implements GenericComplexVector < C > {
 
-  public AbstractComplexVector (int numberOfElements,
+  private VectorSpace vectorSpace;
+
+  public AbstractComplexVector (int numberOfElements, VectorSpace vectorSpace,
       ComplexNumberFactory complexNumberFactory,
       ComplexMatriceFactory complexMatriceFactory) {
-    this (numberOfElements, true, complexNumberFactory, complexMatriceFactory);
+    this (numberOfElements, true, vectorSpace, complexNumberFactory,
+        complexMatriceFactory);
+
   }
 
   public AbstractComplexVector (int numberOfElements, boolean horizantal,
-      ComplexNumberFactory complexNumberFactory,
+      VectorSpace vectorSpace, ComplexNumberFactory complexNumberFactory,
       ComplexMatriceFactory complexMatriceFactory) {
     super (horizantal ? 1 : numberOfElements,
         horizantal ? numberOfElements : 1, complexNumberFactory,
         complexMatriceFactory);
+    this.vectorSpace = vectorSpace;
+  }
+
+  @Override
+  public VectorSpace getVectorSpace () {
+    return vectorSpace;
   }
 
   @Override

@@ -20,9 +20,9 @@ package org.labcrypto.infosim.simple.thesis.math;
 
 /**
  * @author Kamran Amini  <kam.cpp@gmail.com>
- * @date   Jan 23, 2014
+ * @date   Jan 24, 2014
  * 
  */
-public class VectorSpace {
+public interface VectorSpace {
 
 }
