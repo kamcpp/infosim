@@ -19,27 +19,33 @@ package org.labcrypto.infosim.simple.thesis;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 22, 2014
+ * @date Jan 23, 2014
  * 
  */
-public interface ComplexNumber < RealNumberType > {
+public class SimpleRealNumberPair {
 
-  ComplexNumber < RealNumberType > negative ();
+  private SimpleRealNumberValueType number1;
+  private SimpleRealNumberValueType number2;
 
-  ComplexNumber < RealNumberType > inverse ();
+  public SimpleRealNumberPair (SimpleRealNumberValueType number1,
+      SimpleRealNumberValueType number2) {
+    setNumber1 (number1);
+    setNumber2 (number2);
+  }
 
-  ComplexNumber < RealNumberType > conjugate ();
+  public SimpleRealNumberValueType getNumber1 () {
+    return number1;
+  }
 
-  ComplexNumber < RealNumberType > add (ComplexNumber < RealNumberType > a);
+  public void setNumber1 (SimpleRealNumberValueType number1) {
+    this.number1 = number1;
+  }
 
-  ComplexNumber < RealNumberType > multiply (ComplexNumber < RealNumberType > a);
+  public SimpleRealNumberValueType getNumber2 () {
+    return number2;
+  }
 
-  ComplexNumber < RealNumberType > subtract (ComplexNumber < RealNumberType > a);
-
-  ComplexNumber < RealNumberType > divide (ComplexNumber < RealNumberType > a);
-
-  RealNumberType real ();
-
-  RealNumberType imaginary ();
-
+  public void setNumber2 (SimpleRealNumberValueType number2) {
+    this.number2 = number2;
+  }
 }

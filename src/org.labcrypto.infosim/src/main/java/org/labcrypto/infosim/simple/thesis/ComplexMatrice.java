@@ -19,27 +19,37 @@ package org.labcrypto.infosim.simple.thesis;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 22, 2014
+ * @date Jan 23, 2014
  * 
  */
-public interface ComplexNumber < RealNumberType > {
+public interface ComplexMatrice < ComplexNumberType > {
 
-  ComplexNumber < RealNumberType > negative ();
+  int numberOfColumns ();
 
-  ComplexNumber < RealNumberType > inverse ();
+  int numberOfRows ();
 
-  ComplexNumber < RealNumberType > conjugate ();
+  ComplexNumberType member (int rowIndex, int columnIndex);
 
-  ComplexNumber < RealNumberType > add (ComplexNumber < RealNumberType > a);
+  void setMember (int rowIndex, int columnIndex, ComplexNumberType c);
 
-  ComplexNumber < RealNumberType > multiply (ComplexNumber < RealNumberType > a);
+  boolean isSquare ();
 
-  ComplexNumber < RealNumberType > subtract (ComplexNumber < RealNumberType > a);
+  boolean isIdentity ();
 
-  ComplexNumber < RealNumberType > divide (ComplexNumber < RealNumberType > a);
+  void makeIdentity ();
 
-  RealNumberType real ();
+  
+  ComplexMatrice < ComplexNumberType > negative ();
 
-  RealNumberType imaginary ();
+  ComplexMatrice < ComplexNumberType > inverse ();
+
+  ComplexMatrice < ComplexNumberType > add (
+      ComplexMatrice < ComplexNumberType > m);
+
+  ComplexMatrice < ComplexNumberType > subtract (
+      ComplexMatrice < ComplexNumberType > m);
+
+  ComplexMatrice < ComplexNumberType > multiply (
+      ComplexMatrice < ComplexNumberType > m);
 
 }

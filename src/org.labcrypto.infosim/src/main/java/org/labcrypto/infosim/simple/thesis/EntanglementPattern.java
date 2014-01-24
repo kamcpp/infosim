@@ -18,27 +18,31 @@
 
 package org.labcrypto.infosim.simple.thesis;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
  * @date Jan 21, 2014
  * 
  */
-public class EntanglementPattern {
+public class EntanglementPattern < ComplexNumberType > {
 
   private int numberOfBits;
-  private double[] coefficients;
+  private List < ComplexNumberType > coefficients;
 
   public EntanglementPattern (int numberOfBits) {
     this.numberOfBits = numberOfBits;
-    this.coefficients = new double[numberOfBits];
+    this.coefficients = new ArrayList < ComplexNumberType > ();
   }
 
-  public double get (int index) {
-    return coefficients[index];
+  public ComplexNumberType get (int index) {
+    return coefficients.get (index);
   }
 
-  public void set (int index, double coefficient) {
-    coefficients[index] = coefficient;
+  public void set (int index, ComplexNumberType coefficient) {
+    coefficients.set (index, coefficient);
   }
 
   public int getNumberOfBits () {

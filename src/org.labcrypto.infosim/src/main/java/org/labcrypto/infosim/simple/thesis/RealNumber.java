@@ -19,27 +19,23 @@ package org.labcrypto.infosim.simple.thesis;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 22, 2014
+ * @date Jan 24, 2014
  * 
  */
-public interface ComplexNumber < RealNumberType > {
+public interface RealNumber {
 
-  ComplexNumber < RealNumberType > negative ();
+  Object getValue ();
 
-  ComplexNumber < RealNumberType > inverse ();
+  RealNumber negative ();
 
-  ComplexNumber < RealNumberType > conjugate ();
+  RealNumber inverse ();
 
-  ComplexNumber < RealNumberType > add (ComplexNumber < RealNumberType > a);
+  RealNumber add (RealNumber a);
 
-  ComplexNumber < RealNumberType > multiply (ComplexNumber < RealNumberType > a);
+  RealNumber multiply (RealNumber a);
 
-  ComplexNumber < RealNumberType > subtract (ComplexNumber < RealNumberType > a);
+  RealNumber subtract (RealNumber a);
 
-  ComplexNumber < RealNumberType > divide (ComplexNumber < RealNumberType > a);
-
-  RealNumberType real ();
-
-  RealNumberType imaginary ();
+  RealNumber divide (RealNumber a);
 
 }

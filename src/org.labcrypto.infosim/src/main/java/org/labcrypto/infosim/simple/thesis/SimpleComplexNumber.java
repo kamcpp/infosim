@@ -25,4 +25,46 @@ package org.labcrypto.infosim.simple.thesis;
 public class SimpleComplexNumber extends
     AbstractComplexNumber < SimpleRealNumber > {
 
+  public SimpleComplexNumber (SimpleRealNumber real, SimpleRealNumber imaginary) {
+    super (real, imaginary);
+  }
+
+  @Override
+  public SimpleComplexNumber negative () {
+    return new SimpleComplexNumber (real.negative (), imaginary.negative ());
+  }
+
+  @Override
+  public SimpleComplexNumber inverse () {
+    // TODO
+    return null;
+  }
+
+  @Override
+  public SimpleComplexNumber conjugate () {
+    return new SimpleComplexNumber (real, imaginary.negative ());
+  }
+
+  @Override
+  public SimpleComplexNumber add (ComplexNumber < SimpleRealNumber > a) {
+    return new SimpleComplexNumber (real.add (a.real ()), imaginary.add (a
+        .imaginary ()));
+  }
+
+  @Override
+  public SimpleComplexNumber multiply (ComplexNumber < SimpleRealNumber > a) {
+    return new SimpleComplexNumber (real.multiply (a.real ())
+        .subtract (imaginary).multiply (a.imaginary ()), real
+        .multiply (a.imaginary ()).add (imaginary).multiply (a.real ()));
+  }
+
+  @Override
+  public SimpleComplexNumber subtract (ComplexNumber < SimpleRealNumber > a) {
+    return add (a.negative ());
+  }
+
+  @Override
+  public SimpleComplexNumber divide (ComplexNumber < SimpleRealNumber > a) {
+    return multiply (a.inverse ());
+  }
 }

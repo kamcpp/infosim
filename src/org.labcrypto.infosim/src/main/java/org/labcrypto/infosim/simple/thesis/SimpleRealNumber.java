@@ -23,21 +23,95 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 22, 2014
  * 
  */
-public class SimpleRealNumber {
-
-  public enum SimpleRealNumberValueType {
-    MinusOne,
-    Zero,
-    PositiveOne
-  }
+public class SimpleRealNumber implements
+    GenericRealNumber < SimpleRealNumberValueType > {
 
   private SimpleRealNumberValueType value;
+
+  public SimpleRealNumber (SimpleRealNumberValueType value) {
+    this.value = value;
+  }
 
   public SimpleRealNumberValueType getValue () {
     return value;
   }
 
-  public void setValue (SimpleRealNumberValueType value) {
-    this.value = value;
+  @Override
+  public SimpleRealNumber negative () {
+    SimpleRealNumberValueType negativeValue = SimpleRealNumberOperationTables.NegationTable
+        .get (value);
+    if (negativeValue == null) {
+      throw new SimpleRealNumberOperationNotSupportedException ();
+    }
+    return new SimpleRealNumber (negativeValue);
+  }
+
+  @Override
+  public SimpleRealNumber inverse () {
+    SimpleRealNumberValueType negativeValue = SimpleRealNumberOperationTables.InversionTable
+        .get (value);
+    if (negativeValue == null) {
+      throw new SimpleRealNumberOperationNotSupportedException ();
+    }
+    return new SimpleRealNumber (negativeValue);
+  }
+
+  @Override
+  public SimpleRealNumber add (GenericRealNumber < SimpleRealNumberValueType > a) {
+    SimpleRealNumberValueType result = SimpleRealNumberOperationTables.AddTable
+        .get (new SimpleRealNumberPair (value, a.getValue ()));
+    if (result == null) {
+      throw new SimpleRealNumberOperationNotSupportedException ();
+    }
+    return new SimpleRealNumber (result);
+  }
+
+  @Override
+  public SimpleRealNumber multiply (
+      GenericRealNumber < SimpleRealNumberValueType > a) {
+    SimpleRealNumberValueType result = SimpleRealNumberOperationTables.MultiplyTable
+        .get (new SimpleRealNumberPair (value, a.getValue ()));
+    if (result == null) {
+      throw new SimpleRealNumberOperationNotSupportedException ();
+    }
+    return new SimpleRealNumber (result);
+  }
+
+  @Override
+  public SimpleRealNumber subtract (
+      GenericRealNumber < SimpleRealNumberValueType > a) {
+    return add (a.negative ());
+  }
+
+  @Override
+  public SimpleRealNumber divide (
+      GenericRealNumber < SimpleRealNumberValueType > a) {
+    if (a.getValue () == SimpleRealNumberValueType.Zero) {
+      throw new SimpleRealNumberDivisionByZeroException ();
+    }
+    if (value == SimpleRealNumberValueType.Zero) {
+      return new SimpleRealNumber (SimpleRealNumberValueType.Zero);
+    }
+    return multiply (a.inverse ());
+  }
+
+  @Override
+  public RealNumber add (RealNumber a) {
+    return add ((SimpleRealNumber) (a));
+  }
+
+  @Override
+  public RealNumber multiply (RealNumber a) {
+    return multiply ((SimpleRealNumber) (a));
+  }
+
+  @Override
+  public RealNumber subtract (RealNumber a) {
+    return subtract ((SimpleRealNumber) (a));
+  }
+
+  @Override
+  public RealNumber divide (RealNumber a) {
+    return divide ((SimpleRealNumber) (a));
   }
 }

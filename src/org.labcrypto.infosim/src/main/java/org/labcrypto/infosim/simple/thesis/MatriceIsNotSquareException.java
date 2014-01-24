@@ -19,27 +19,11 @@ package org.labcrypto.infosim.simple.thesis;
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 22, 2014
+ * @date Jan 24, 2014
  * 
  */
-public interface ComplexNumber < RealNumberType > {
+public class MatriceIsNotSquareException extends RuntimeException {
 
-  ComplexNumber < RealNumberType > negative ();
-
-  ComplexNumber < RealNumberType > inverse ();
-
-  ComplexNumber < RealNumberType > conjugate ();
-
-  ComplexNumber < RealNumberType > add (ComplexNumber < RealNumberType > a);
-
-  ComplexNumber < RealNumberType > multiply (ComplexNumber < RealNumberType > a);
-
-  ComplexNumber < RealNumberType > subtract (ComplexNumber < RealNumberType > a);
-
-  ComplexNumber < RealNumberType > divide (ComplexNumber < RealNumberType > a);
-
-  RealNumberType real ();
-
-  RealNumberType imaginary ();
+  private static final long serialVersionUID = -1834903513415787882L;
 
 }

@@ -22,24 +22,20 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 22, 2014
  * 
  */
-public interface ComplexNumber < RealNumberType > {
+public interface GenericRealNumber < T > extends RealNumber {
 
-  ComplexNumber < RealNumberType > negative ();
+  T getValue ();
 
-  ComplexNumber < RealNumberType > inverse ();
+  GenericRealNumber < T > negative ();
 
-  ComplexNumber < RealNumberType > conjugate ();
+  GenericRealNumber < T > inverse ();
 
-  ComplexNumber < RealNumberType > add (ComplexNumber < RealNumberType > a);
+  GenericRealNumber < T > add (GenericRealNumber < T > a);
 
-  ComplexNumber < RealNumberType > multiply (ComplexNumber < RealNumberType > a);
+  GenericRealNumber < T > multiply (GenericRealNumber < T > a);
 
-  ComplexNumber < RealNumberType > subtract (ComplexNumber < RealNumberType > a);
+  GenericRealNumber < T > subtract (GenericRealNumber < T > a);
 
-  ComplexNumber < RealNumberType > divide (ComplexNumber < RealNumberType > a);
-
-  RealNumberType real ();
-
-  RealNumberType imaginary ();
+  GenericRealNumber < T > divide (GenericRealNumber < T > a);
 
 }

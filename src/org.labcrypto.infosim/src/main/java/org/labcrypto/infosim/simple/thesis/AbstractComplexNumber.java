@@ -22,12 +22,18 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 22, 2014
  * 
  */
-public class AbstractComplexNumber < T > implements ComplexNumber < T > {
+public abstract class AbstractComplexNumber < T > implements ComplexNumber < T > {
 
-  private T real;
-  private T imaginary;
+  protected T real;
+  protected T imaginary;
 
-  public T getReal () {
+  public AbstractComplexNumber (T real, T imaginary) {
+    setReal (real);
+    setImaginary (imaginary);
+  }
+
+  @Override
+  public T real () {
     return real;
   }
 
@@ -35,7 +41,8 @@ public class AbstractComplexNumber < T > implements ComplexNumber < T > {
     this.real = real;
   }
 
-  public T getImaginary () {
+  @Override
+  public T imaginary () {
     return imaginary;
   }
 

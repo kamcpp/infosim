@@ -22,24 +22,14 @@ package org.labcrypto.infosim.simple.thesis;
  * @date Jan 22, 2014
  * 
  */
-public interface ComplexNumber < RealNumberType > {
-
-  ComplexNumber < RealNumberType > negative ();
-
-  ComplexNumber < RealNumberType > inverse ();
-
-  ComplexNumber < RealNumberType > conjugate ();
-
-  ComplexNumber < RealNumberType > add (ComplexNumber < RealNumberType > a);
-
-  ComplexNumber < RealNumberType > multiply (ComplexNumber < RealNumberType > a);
-
-  ComplexNumber < RealNumberType > subtract (ComplexNumber < RealNumberType > a);
-
-  ComplexNumber < RealNumberType > divide (ComplexNumber < RealNumberType > a);
-
-  RealNumberType real ();
-
-  RealNumberType imaginary ();
-
+public enum SimpleRealNumberValueType {
+  MinusTwo,
+  MinusOne,
+  MinusOneOverTwoSquared,
+  MinusHalf,
+  Zero,
+  PositiveHalf,
+  PositiveOneOverTwoSquared,
+  PositiveOne,
+  PositiveTwo
 }
