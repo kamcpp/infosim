@@ -15,13 +15,25 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.labcrypto.infosim.simple.thesis.phys;
+package org.labcrypto.infosim.simple.thesis;
+
+import org.junit.Assert;
+import org.junit.Test;
+
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 24, 2014
+ * @date Jan 30, 2014
  * 
  */
-public class QuantumState {
+public class QuantumBitTest {
 
+  @Test
+  public void test1 () {
+    OrthogonalFiniteVectorSpace vs = new OrthogonalFiniteVectorSpace ();
+    SimpleQuantumState qs = new SimpleQuantumState (true, vs);
+    QuantumBit qbit1 = new QuantumBit (qs);
+    System.out.println (qbit1);
+    Assert.assertTrue (true);
+  }
 }

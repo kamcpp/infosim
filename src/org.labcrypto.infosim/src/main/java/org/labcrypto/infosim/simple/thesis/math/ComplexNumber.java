@@ -53,4 +53,7 @@ public interface ComplexNumber extends MyCloneable < ComplexNumber > {
 
   Object imaginary ();
 
+  String toString (int indent);
+
+  String toString ();
 }

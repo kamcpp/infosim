@@ -42,4 +42,28 @@ public enum SimpleRealNumberValueType {
   public int getNumber () {
     return number;
   }
+
+  @Override
+  public String toString () {
+    if (number == 0) {
+      return "-2";
+    } else if (number == 1) {
+      return "-1";
+    } else if (number == 2) {
+      return "-1/sqrt(2)";
+    } else if (number == 3) {
+      return "-1/2";
+    } else if (number == 4) {
+      return "0";
+    } else if (number == 5) {
+      return "1/2";
+    } else if (number == 6) {
+      return "1/sqrt(2)";
+    } else if (number == 7) {
+      return "1";
+    } else if (number == 8) {
+      return "2";
+    }
+    return "WRONG VALUE";
+  }
 }

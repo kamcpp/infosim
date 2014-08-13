@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.labcrypto.infosim.simple.thesis.math;
 
 /**
@@ -32,7 +33,6 @@ public abstract class AbstractComplexVector < C extends ComplexNumber > extends
       ComplexMatriceFactory complexMatriceFactory) {
     this (numberOfElements, true, vectorSpace, complexNumberFactory,
         complexMatriceFactory);
-
   }
 
   public AbstractComplexVector (int numberOfElements, boolean horizantal,
@@ -71,13 +71,13 @@ public abstract class AbstractComplexVector < C extends ComplexNumber > extends
 
   @Override
   public void setMember (int index, C complexNumber) {
-    setMember (index, complexNumber);
+    setMember (index, (Object)complexNumber);
   }
 
   @Override
   @SuppressWarnings ("unchecked")
   public void setMember (int index, Object complexNumber) {
-    setMember (isHorizantal () ? 1 : index, isHorizantal () ? index : 1,
+    setMember (isHorizantal () ? 0 : index, isHorizantal () ? index : 0,
         (C) complexNumber, true);
   }
 
@@ -129,5 +129,24 @@ public abstract class AbstractComplexVector < C extends ComplexNumber > extends
   @Override
   public GenericComplexVector < C > multiply (GenericComplexVector < C > v) {
     return multiply (v);
+  }
+
+  @Override
+  public String toString () {
+    return toString (0);
+  }
+
+  public String toString (int indent) {
+    String indentStr = "";
+    for (int i = 1; i <= indent; i++) {
+      indentStr += "  ";
+    }
+    String str = "";
+    str += indentStr + "ComplexVector {\r\n";
+    for (int i = 0; i < numberOfElements (); i++) {
+      str += member (i).toString (indent + 1);
+    }
+    str += indentStr + "}\r\n";
+    return str;
   }
 }

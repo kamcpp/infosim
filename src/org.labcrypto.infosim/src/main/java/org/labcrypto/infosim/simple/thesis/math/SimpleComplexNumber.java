@@ -103,4 +103,25 @@ public class SimpleComplexNumber extends
     SimpleComplexNumber clone = new SimpleComplexNumber (real (), imaginary ());
     return clone;
   }
+
+  @Override
+  public String toString () {
+    return toString (0);
+  }
+
+  @Override
+  public String toString (int indent) {
+    String indentStr = "";
+    for (int i = 1; i <= indent; i++) {
+      indentStr += "  ";
+    }
+    String str = "";
+    if (imaginary.isZero ()) {
+      str += indentStr + real.getValue ();
+    } else {
+      str += indentStr + "(" + real.getValue () + ", " + imaginary.getValue ()
+          + ")";
+    }
+    return str;
+  }
 }

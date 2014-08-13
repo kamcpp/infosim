@@ -15,23 +15,29 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.labcrypto.infosim.simple.thesis;
+
+import org.labcrypto.infosim.simple.thesis.math.ArrayComplexVector;
+import org.labcrypto.infosim.simple.thesis.math.ComplexMatriceFactory;
+import org.labcrypto.infosim.simple.thesis.math.ComplexNumber;
+import org.labcrypto.infosim.simple.thesis.math.ComplexNumberFactory;
+import org.labcrypto.infosim.simple.thesis.math.VectorSpace;
+
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 20, 2014
+ * @date Jan 30, 2014
  * 
  */
-public class QuantumBit {
+public class QuantumState < C extends ComplexNumber > extends
+    ArrayComplexVector < C > {
 
-  private QuantumState < ? > quantumState;
-
-  public QuantumBit (QuantumState < ? > quantumState) {
-    this.quantumState = quantumState;
-  }
-
-  public QuantumState < ? > getQuantumState () {
-    return quantumState;
+  public QuantumState (int numberOfElements, boolean horizantal,
+      VectorSpace vectorSpace, ComplexNumberFactory complexNumberFactory,
+      ComplexMatriceFactory complexMatriceFactory) {
+    super (numberOfElements, horizantal, vectorSpace, complexNumberFactory,
+        complexMatriceFactory);
   }
 
   @Override
@@ -41,12 +47,13 @@ public class QuantumBit {
 
   public String toString (int indent) {
     String indentStr = "";
-    for (int i = 1; i < indent; i++) {
+    for (int i = 1; i <= indent; i++) {
       indentStr += "  ";
     }
-    String str = indentStr + "QuantumBit {\r\n";
-    str += indentStr + quantumState.toString (1);
-    str += indentStr + "}\r\n";
+    String str = "";
+    str += indent + "Quantum State {\r\n";
+    str += indent + super.toString (indent + 1);
+    str += indent + "}\r\n";
     return str;
   }
 }

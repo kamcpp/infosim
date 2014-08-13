@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.labcrypto.infosim.simple.thesis;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class EntanglementContext {
       entangledQuantumBits = new ArrayList < QuantumBit > ();
     }
     entangledQuantumBits.add (quantumBit);
-    quantumBit.setEntanglementContext (this);
+    // quantumBit.setEntanglementContext (this);
   }
 
   public synchronized void removeQuantumBit (QuantumBit quantumBit) {
@@ -44,7 +45,7 @@ public class EntanglementContext {
       return;
     }
     entangledQuantumBits.remove (quantumBit);
-    quantumBit.setEntanglementContext (null);
+    // quantumBit.setEntanglementContext (null);
   }
 
   public EntanglementPattern getEntanglementPattern () {

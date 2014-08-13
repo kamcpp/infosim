@@ -15,6 +15,7 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
+
 package org.labcrypto.infosim.simple.thesis.math;
 
 /**
@@ -63,22 +64,26 @@ public class ArrayComplexVector < C extends ComplexNumber > extends
       boolean makeClone) {
     if (isHorizantal ()) {
       if (rowIndex != 0) {
-        throw new IndexOutOfBoundsException ();
-      }
-      if (columnIndex >= 0 && columnIndex < numberOfElements ()) {
+        throw new IndexOutOfBoundsException ("Row index: " + rowIndex);
+      } else if (columnIndex >= 0 && columnIndex < numberOfElements ()) {
         array[columnIndex] = makeClone ? complexNumber.cloneThis ()
             : complexNumber;
+      } else {
+        throw new IndexOutOfBoundsException ("Column index: " + columnIndex
+            + ", Row index: " + rowIndex + ", Number of elements: "
+            + numberOfElements ());
       }
-      throw new IndexOutOfBoundsException ();
     } else {
       if (columnIndex != 0) {
-        throw new IndexOutOfBoundsException ();
-      }
-      if (rowIndex >= 0 && rowIndex < numberOfElements ()) {
+        throw new IndexOutOfBoundsException ("Column index: " + columnIndex);
+      } else if (rowIndex >= 0 && rowIndex < numberOfElements ()) {
         array[rowIndex] = makeClone ? complexNumber.cloneThis ()
             : complexNumber;
+      } else {
+        throw new IndexOutOfBoundsException ("Column index: " + columnIndex
+            + ", Row index: " + rowIndex + ", Number of elements: "
+            + numberOfElements ());
       }
-      throw new IndexOutOfBoundsException ();
     }
   }
 }

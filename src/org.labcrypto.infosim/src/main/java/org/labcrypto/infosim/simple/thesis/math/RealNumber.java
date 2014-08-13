@@ -49,4 +49,14 @@ public interface RealNumber extends MyCloneable < RealNumber > {
 
   RealNumber divide (RealNumber a);
 
+  int isEqualTo (RealNumber a);
+
+  boolean isGreaterThan (RealNumber a);
+
+  boolean isLessThan (RealNumber a);
+
+  boolean isExactlyEqualTo (RealNumber a);
+
+  boolean isEqualInNeighbourhood (RealNumber a, RealNumber distance);
+
 }

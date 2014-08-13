@@ -38,4 +38,13 @@ public interface GenericRealNumber < T > extends RealNumber {
 
   GenericRealNumber < T > divide (GenericRealNumber < T > a);
 
+  int isEqualTo (GenericRealNumber < T > a);
+
+  boolean isGreaterThan (GenericRealNumber < T > a);
+
+  boolean isLessThan (GenericRealNumber < T > a);
+
+  boolean isExactlyEqualTo (GenericRealNumber < T > a);
+
+  boolean isEqualInNeighbourhood (GenericRealNumber < T > a, GenericRealNumber < T > distance);
 }

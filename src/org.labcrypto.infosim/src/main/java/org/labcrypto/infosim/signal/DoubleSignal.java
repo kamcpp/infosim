@@ -15,38 +15,34 @@
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.labcrypto.infosim.simple.thesis;
+package org.labcrypto.infosim.signal;
+
+import java.util.Hashtable;
+
 
 /**
  * @author Kamran Amini <kam.cpp@gmail.com>
- * @date Jan 20, 2014
+ * @date Apr 3, 2014
  * 
  */
-public class QuantumBit {
+public class DoubleSignal implements Signal {
 
-  private QuantumState < ? > quantumState;
+  private Hashtable < Double, Double > data;
 
-  public QuantumBit (QuantumState < ? > quantumState) {
-    this.quantumState = quantumState;
-  }
-
-  public QuantumState < ? > getQuantumState () {
-    return quantumState;
+  public DoubleSignal () {
+    data = new Hashtable <> ();
   }
 
   @Override
-  public String toString () {
-    return toString (0);
-  }
-
-  public String toString (int indent) {
-    String indentStr = "";
-    for (int i = 1; i < indent; i++) {
-      indentStr += "  ";
+  public Double getValue (double time) {
+    if (data.contains (time)) {
+      return data.get (time);
     }
-    String str = indentStr + "QuantumBit {\r\n";
-    str += indentStr + quantumState.toString (1);
-    str += indentStr + "}\r\n";
-    return str;
+    return null;
+  }
+  
+  @Override
+  public void setValue(double time, double newValue) {
+    data.put (time, newValue);
   }
 }
